@@ -5,215 +5,67 @@
     box-sizing: border-box;
 }
 
-.header {
+.bg-purple {
     background-image: linear-gradient(to bottom, #6c00cc, #4b008e);
-    padding: 15px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-}
-
-.header-title-column {
-    display: flex;
-    align-items: center;
 }
 
 .header-title {
-    color: white;
-    font-family: "Josefin Sans", sans-serif;
+    font-family: 'Josefin Sans';
     text-shadow: 1px 1px 1px black;
 }
 
-.navbar-column {
-    display: flex;
-    justify-content: end;
-}
-
-.nav {
-    list-style: none;
-    display: flex;
-}
-
-.navitem {
-    margin: 5px;
-    margin-left: 7px;
-    margin-right: 7px;
-} 
-
-.navlink {
-    text-decoration: none;
-    color: white;
+.nav-text {
     font-family: 'Josefin Sans';
+    text-shadow: 1px 1px 1px black;
     text-transform: uppercase;
-    padding: 15px;
-    text-shadow: 1px 1px 1px black;
 }
 
-
-.intro-container {
-    background-color: #fff;
-    border-radius: 2px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    justify-content: center;
-}
-
-.content-header {
-    font-family: 'Josefin Sans';
-    color: #2c0054;
-    padding: 5px;
-    font-size: 60px;
-}
-
-.content-text {
-    text-align: center;
-    color: #2c0054;
-    padding: 10px;
-}
-
-.copyright-container {
-    display: flex;
-    justify-content: center;
-    background-image: linear-gradient(to bottom, #6c00cc, #4b008e);
-    padding: 25px;
-}
-
-#year {
-    color: white;
-    margin: 3px;
+.footer-text {
     font-family: 'Josefin Sans';
     text-shadow: 1px 1px 1px black;
 }
 
-i {
-    color: white;
-    margin: 3px;
-    text-shadow: 1px 1px 1px black;
-}
-
-#site-name {
-    color: #fff;
-    margin: 3px;
+.page-title {
     font-family: 'Josefin Sans';
-    text-shadow: 1px 1px 1px black;
+    color: #4b008e;
+    font-weight: 900;
 }
 
-.portfolio-container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    flex-direction: column;
-    height: 100vh;
+.border-purple {
+    border: 3px solid #4b008e;
 }
 
-.portfolio-header {
-    color: #2c0054;
-    margin: 10px;
+.card-links {
+    color: #4b008e;
     font-family: 'Josefin Sans';
+    font-size: 25px;
 }
 
-.portfolio {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 2px;
-    width: 100vh;
-    height: 100vh;
+.text-purple {
+    color: #4b008e;
 }
 
 .contact-me-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-}
-
-.contact-header {
-    font-family: 'Josefin Sans';
-    color: #2c0054;
-    margin: 10px;
-}
-
-.form-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    border-radius: 7px;
-    height: 100vh;
-}
-
-
-
-input {
-    border: none;
-    border-bottom: 3px solid #2c0054;
-    width: 100%;
-    font-size: 20px;
-    padding: 10px;
-    margin-bottom: 30px;
 }
 
 input::placeholder {
-    color: #2c0054;
+    color: #4b008e;
 }
 
-textarea {
-    border: none;
-    border-bottom: 3px solid #2c0054;
+textarea::placeholder {
+    color: #4b008e;
+}
+
+.btn-submit {
+    border: 3px solid #4b008e;
     width: 100%;
-    font-size: 20px;
-    padding: 10px;
-    margin-bottom: 30px;
-}
-
-form button {
-    width: 100%;
-    border: 3px solid #2c0054;
     background-color: white;
-    padding: 15px;
-    color: #2c0054;
-    text-transform: uppercase;
-    font-weight: 900;
 }
 
-.portfolio-card {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin: 2px;
-}
-
-.port-img {
-    height: 50px;
-    border-radius: 25%;
-    margin-bottom: 10px;
-}
-
-.port-site {
-    color: #2c0054;
+.header-font {
     font-family: 'Josefin Sans';
-    font-size: 20px;
-}
-
-.card-header {
-    margin-bottom: 10px;
-}
-
-.card-content {
-    margin-bottom: 10px;
-}
-
-.card-text {
-    text-align: center;
-    color: #2c0054;
-}
-
-.reviewer {
-    color: #2c0054;
+    font-size: 40px;
 }
