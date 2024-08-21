@@ -77,7 +77,7 @@ textarea::placeholder {
 .bg-img {
     background-image: url(./images/sitebackground.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .bg-twhite {
