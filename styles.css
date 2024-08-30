@@ -77,9 +77,15 @@ textarea::placeholder {
 .bg-img {
     background-image: url(./images/sitebackground.png);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%
 }
 
 .bg-twhite {
-    background-color: rgba(255, 255, 255, .75);
+    background-color: rgba(255, 255, 255, .65);
+}
+
+.ss-bg-img {
+    background-image: url('./images/Salish\ Shipping\ co\ logo.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
