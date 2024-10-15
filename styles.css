@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: aliceblue;
+    background-image: url('./images/checkered-pattern.png');
+}
+
 .bg-purple {
     background-image: linear-gradient(to bottom, #6c00cc, #4b008e);
 }
@@ -94,5 +99,8 @@ textarea::placeholder {
     text-shadow: 1px 1px 2px black;
 }
 
-
+.bg-purple-textured {
+    background-image: linear-gradient(to bottom, #6c00cc, #4b008e);
+    background-image: url('./images/checkered-pattern.png');
+}
 
