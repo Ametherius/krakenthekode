@@ -14,66 +14,52 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-purple" aria-label="site-nav">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#site-nav" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <div class="collapse navbar-collapse d-lg-flex" id="site-nav">
-            <a class="navbar-brand col-lg-3 me-0 text-white header-title fs-2" href="./">Kraken The Kode</a>
-            <ul class="navbar-nav col-lg-6 justify-content-lg-center">
-              <li class="nav-item">
-                <a class="nav-link text-white nav-text" href="./">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white nav-text" href="./porfolio">Portfolio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white nav-text" href="./contact-megit ">Contact Me</a>
-              </li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-sm bg-dark bg-gradient p-3">
+    <div class="container-fluid" id="navbar">
+      <a href="#" class="navbar-brand"><img src="./images/brandlogo.png" alt="" style="width: 50px;"></a>
+      <button class="navbar-toggler border-3 border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-expanded="false">
+        <i class="fa-solid fa-bars text-white fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item">
+            <a href="./" class="nav-link py-1 px-3 rounded-1 text-white">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./portfolio" class="nav-link py-1 px-3 rounded-1 text-white">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a href="./pricing" class="nav-link py-1 px-3 rounded-1 text-white">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a href="./contact-me" class="nav-link py-1 px-3 rounded-1 text-white">Contact Me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
     <div class="container-fluid d-flex my-3 justify-content-center">
-        <h1 class="page-title">Contact Me</h1>
+        <h1 class="text-white">Contact Me</h1>
     </div>
 
     <div class="container-fluid vh-100">
       
       <div class="container-fluid d-flex w-fit-content justify-content-center bg-purple rounded-5 p-3 text">
         
-      <form class="p-4 w-auto" action="https://formsubmit.co/rylan@krakenthekode.com">
-        <h4 class="text-center mb-4 text-white text-decoration-underline">General Inquiries</h4>
+      <form class="p-4 border-2" action="https://formsubmit.co/info@krakenthekode.com">
         <input type="text" name="_honey" style="display:none">
         <input type="hidden" name="_subject" value="New Inquiry">
 
-        <div class="row mb-4">
-          <div class="col">
-            <input type="email" name="email" placeholder="Email Address" class="border-0 rounded p-2" required>
+          <div class="container-fluid d-flex flex-column">
+            <input type="email" name="Sender&nbsp;Email" placeholder="Email" class="p-1 mb-3 bg-transparent">
+            <input type="text" name="Plan" placeholder="Desired Plan" class="p-1 mb-3 bg-transparent">
+            <input type="text" name="Page&nbsp;amount" placeholder="Number of Pages" class="p-1 mb-3 bg-transparent">
+            <input type="text" name="Domain&nbsp;needed" placeholder="Do you need a domain?" class="p-1 mb-3 bg-transparent">
+            <textarea name="Additional&nbsp;info" rows="5" placeholder="Additional Info" class="p-1 mb-3 bg-transparent"></textarea>
+            <input type="button" class="btn btn-light fw-bold" value="Send Message">
           </div>
-        </div>
-
-        <div class="row mb-4">
-          <div class="col">
-            <input type="text" name="subject" placeholder="Subject" class="border-0 rounded p-2" required>
-          </div>
-        </div>
-
-        <div class="row mb-4">
-          <div class="col d-flex justify-content-center">
-            <textarea class="rounded p-2" name="message" cols="20" rows="5" placeholder="Message" required></textarea>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col d-flex justify-content-center">
-            <input type="submit" value="Send Message" class="rounded bg-white text-purple border-0 py-2 p-5">
-          </div>
-        </div>
+        
 
 
       </form>
@@ -81,9 +67,9 @@
       </div>
     </div>
     
-    <footer class="p-3 bg-purple">
+    <footer class="p-3 bg-dark bg-gradient">
         <p class="text-center text-white footer-text">© <span id="year"></span> Kraken The Kode</p>
-      </footer>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
