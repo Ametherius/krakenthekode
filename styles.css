@@ -118,7 +118,7 @@ form .button {
 
  @media (max-width: 768px) {
     #fixed {
-        background: url('./images/background.png') no-repeat center center fixed;
+        background: url('./images/tablet-background.png') no-repeat center center fixed;
         display: table;
         height: 100%;
         position: relative;
@@ -129,7 +129,7 @@ form .button {
 
  @media (max-width: 576px) {
     #fixed {
-        background: url('./images/background.png') no-repeat center center fixed;
+        background: url('./images/tablet-background.png') no-repeat center center fixed;
         display: table;
         height: 100%;
         position: relative;
