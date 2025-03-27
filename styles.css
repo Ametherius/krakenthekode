@@ -115,3 +115,25 @@ form .button {
  .card-img-top {
     height: 250px;
  }
+
+ @media (max-width: 768px) {
+    #fixed {
+        background: url('./images/background.png') no-repeat center center fixed;
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        background-size: cover;
+    }
+ }
+
+ @media (max-width: 576px) {
+    #fixed {
+        background: url('./images/background.png') no-repeat center center fixed;
+        display: table;
+        height: 100%;
+        position: relative;
+        width: 100%;
+        background-size: cover;
+    }
+ }
