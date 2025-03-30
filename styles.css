@@ -118,7 +118,7 @@ form .button {
 
  @media (max-width: 768px) {
     #fixed {
-        background: url('./images/background.png');
+        background-image: url('./images/background.png');
         background-attachment: fixed;
         background-size: cover;
         background-repeat: no-repeat;
