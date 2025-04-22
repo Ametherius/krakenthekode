@@ -4,15 +4,29 @@
     font-family: 'Josefin' sans-serif;
     box-sizing: border-box;
 }
- body {
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
     padding: 0;
     margin: 0;
     height: 100%;
     width: 100%;    
-    background-image: linear-gradient(to bottom right, #000000,#41005b );
+    background: linear-gradient(-45deg, #000000, #41005b, #520073, #000000);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     background-repeat: no-repeat;
- }
-
+}
 
 .nav-link {
     font-family: 'Josefin sans';
@@ -63,7 +77,6 @@ form .button {
     text-shadow: 3px 3px 1px #000;
 }
 
-
 #fixed {
     position: fixed;
     top: 0;
@@ -84,44 +97,44 @@ form .button {
     margin-bottom: 150px;
 }
 
- .btn-primary {
+.btn-primary {
     background-color: #520073;
     border: none;
     box-shadow: 2px 2px 2px black;
     margin-right: 3px;
- }
+}
 
- #welcome {
+#welcome {
     text-shadow: 2px 2px 3px black;
- }
+}
 
- #slogan {
+#slogan {
     text-shadow: 2px 2px 3px black;
- }
+}
 
- .btn-primary:hover {
+.btn-primary:hover {
     background-color: #fff;
     color: #520073;
- }
+}
 
- .btn-light {
+.btn-light {
     color: #520073;
     box-shadow: 2px 2px 2px black;
     margin-left: 5px;
- }
+}
 
- .btn-light:hover {
+.btn-light:hover {
     color: #fff;
     background-color: #520073;
     border: none;
- }
+}
 
- #portfolio {
+#portfolio {
     border: 2px solid #520073;
     box-shadow: 2px 4px 6px black;
- }
+}
 
- .card-img-top {
+.card-img-top {
     height: 250px;
- }
+}
 
