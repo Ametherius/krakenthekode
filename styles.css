@@ -114,6 +114,7 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 10px;
     transition: var(--transition-base);
+    color: var(--color-white);
 }
 
 .service-card:hover {
@@ -122,16 +123,16 @@ body {
 }
 
 .service-card i {
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .service-card h3 {
-    color: #ffffff;
+    color: var(--color-white);
     margin: 1rem 0;
 }
 
 .service-card p {
-    color: #ffffff;
+    color: var(--color-white);
     opacity: 0.9;
 }
 
@@ -141,6 +142,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     transition: var(--transition-base);
+    color: var(--color-white);
 }
 
 .tech-card:hover {
@@ -149,7 +151,11 @@ body {
 }
 
 .tech-card i {
-    color: var(--color-primary-light);
+    color: var(--color-white);
+}
+
+.tech-card h4 {
+    color: var(--color-white);
 }
 
 /* Buttons */
@@ -181,14 +187,21 @@ body {
 .cta {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    color: var(--color-white);
+}
+
+.cta h2, .cta p {
+    color: var(--color-white);
 }
 
 /* Footer */
 .footer {
     background-color: var(--color-dark);
+    color: var(--color-white);
 }
 
 .footer a {
+    color: var(--color-white);
     transition: var(--transition-base);
 }
 
