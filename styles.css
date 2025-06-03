@@ -508,3 +508,73 @@ body {
     }
 }
 
+/* Thank You Page Styles */
+.thank-you {
+    padding-top: 120px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.thank-you-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    color: var(--color-dark);
+}
+
+.thank-you-content h1,
+.thank-you-content h2,
+.thank-you-content h3,
+.thank-you-content p {
+    color: var(--color-dark);
+}
+
+.next-step {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    height: 100%;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.next-step:hover {
+    transform: translateY(-5px);
+}
+
+.next-step i {
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.next-step h3,
+.next-step p {
+    color: var(--color-dark);
+}
+
+.contact-info {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h2,
+.contact-info p {
+    color: var(--color-dark);
+}
+
+/* Responsive adjustments for thank you page */
+@media (max-width: 768px) {
+    .thank-you-content {
+        padding: 2rem 1rem;
+        margin: 1rem;
+    }
+    
+    .next-step {
+        margin-bottom: 1rem;
+    }
+}
+
