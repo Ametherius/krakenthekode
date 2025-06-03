@@ -57,12 +57,12 @@
                             <input type="hidden" name="_test" value="true">
 
                             <div class="mb-4">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
+                                <label for="email" class="form-label">Email Address*</label>
+                                <input type="text" id="email" name="email" class="form-control" required>
                             </div>
 
                             <div class="mb-4">
-                                <label for="projectType" class="form-label">Project Type</label>
+                                <label for="projectType" class="form-label">Project Type*</label>
                                 <select id="projectType" name="project_type" class="form-select" required>
                                     <option value="">Select a project type</option>
                                     <option value="landing-page">Landing Page</option>
@@ -73,12 +73,12 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="pages" class="form-label">Number of Pages</label>
-                                <input type="number" id="pages" name="pages" class="form-control" min="1" required>
+                                <label for="pages" class="form-label">Number of Pages*</label>
+                                <input type="5" id="pages" name="pages" class="form-control" min="1" required>
                             </div>
 
                             <div class="mb-4">
-                                <label for="domain" class="form-label">Domain Requirements</label>
+                                <label for="domain" class="form-label">Domain Requirements*</label>
                                 <select id="domain" name="domain" class="form-select" required>
                                     <option value="">Select domain option</option>
                                     <option value="need-domain">Need a new domain</option>
@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="timeline" class="form-label">Desired Timeline</label>
+                                <label for="timeline" class="form-label">Desired Timeline*</label>
                                 <select id="timeline" name="timeline" class="form-select" required>
                                     <option value="">Select timeline</option>
                                     <option value="asap">As soon as possible</option>
@@ -99,12 +99,17 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="details" class="form-label">Project Details</label>
+                                <label for="details" class="form-label">Project Details*</label>
                                 <textarea id="details" name="details" rows="5" class="form-control" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
                             </div>
 
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                                <label class="form-check-label" for="terms">*I acknowledge that all of the information provided is accurate and correct.</label>
+                            </div>
+
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg px-5">Submit Request</button>
+                                <input type="submit" class="btn btn-primary btn-lg px-5" value="Submit Request">
                             </div>
                         </form>
                     </div>
