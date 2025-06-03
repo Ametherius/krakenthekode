@@ -3,11 +3,13 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(express.static('./'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -79,11 +81,16 @@ app.post('/submit-quote', async (req, res) => {
 
         await transporter.sendMail(userMailOptions);
 
-        res.redirect('/thank-you.html');
+        res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).send('Error sending email');
+        res.status(500).json({ error: 'Error sending email' });
     }
+});
+
+// Add a catch-all route to serve the main HTML file
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'request-quote.html'));
 });
 
 app.listen(port, () => {
