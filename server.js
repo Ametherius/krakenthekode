@@ -18,15 +18,22 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER, // Your Gmail address
-        pass: process.env.EMAIL_PASS  // Your Gmail app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
 // Handle form submission
 app.post('/submit-quote', async (req, res) => {
     try {
+        // Log the request body for debugging
+        console.log('Received form data:', req.body);
+
         const { email, project_type, pages, domain, timeline, details } = req.body;
+
+        if (!email || !project_type || !pages || !domain || !timeline || !details) {
+            return res.status(400).json({ error: 'All fields are required' });
+        }
 
         // Email content
         const mailOptions = {
@@ -87,6 +94,9 @@ app.post('/submit-quote', async (req, res) => {
         res.status(500).json({ error: 'Error sending email' });
     }
 });
+
+// Serve static files
+app.use(express.static(path.join(__dirname)));
 
 // Add a catch-all route to serve the main HTML file
 app.get('*', (req, res) => {

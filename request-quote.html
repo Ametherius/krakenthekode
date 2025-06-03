@@ -133,19 +133,27 @@
             try {
                 submitButton.disabled = true;
                 const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
                 const response = await fetch('/submit-quote', {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
                 });
                 
-                const data = await response.json();
+                const responseData = await response.json();
                 
                 if (response.ok) {
                     formMessage.className = 'alert alert-success mb-4';
                     formMessage.textContent = 'Thank you for your submission! We will get back to you shortly.';
                     form.reset();
                 } else {
-                    throw new Error(data.error || 'Something went wrong');
+                    throw new Error(responseData.error || 'Something went wrong');
                 }
             } catch (error) {
                 formMessage.className = 'alert alert-danger mb-4';
