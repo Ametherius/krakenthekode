@@ -47,18 +47,10 @@
                 <div class="col-lg-8">
                     <h1 class="text-center mb-5">Request Your Quote</h1>
                     <div class="quote-form">
-                        <form method="POST" action="https://formsubmit.co/info.krakenthekode@gmail.com">
-                            <input type="text" name="_honey" style="display:none">
-                            <input type="hidden" name="_subject" value="New Quote Request">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="hidden" name="_autoresponse" value="Thank you for your quote request! We will review your information and get back to you shortly.">
-                            <input type="hidden" name="_next" value="./thank-you.html">
-                            <input type="hidden" name="_test" value="true">
-
+                        <form method="POST" action="/submit-quote">
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address*</label>
-                                <input type="text" id="email" name="email" class="form-control" required>
+                                <input type="email" id="email" name="email" class="form-control" required>
                             </div>
 
                             <div class="mb-4">
