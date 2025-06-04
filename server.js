@@ -50,41 +50,54 @@ app.post('/submit-quote', async (req, res) => {
 
         // Email content
         const mailOptions = {
-            from: process.env.EMAIL_USER,
+            from: email,
             to: 'info.krakenthekode@gmail.com',
             subject: 'New Quote Request',
             html: `
-                <h2>New Quote Request</h2>
-                <table border="1" cellpadding="5" cellspacing="0">
-                    <tr>
-                        <th>Field</th>
-                        <th>Value</th>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>${email}</td>
-                    </tr>
-                    <tr>
-                        <td>Project Type</td>
-                        <td>${project_type}</td>
-                    </tr>
-                    <tr>
-                        <td>Number of Pages</td>
-                        <td>${pages}</td>
-                    </tr>
-                    <tr>
-                        <td>Domain Requirements</td>
-                        <td>${domain}</td>
-                    </tr>
-                    <tr>
-                        <td>Timeline</td>
-                        <td>${timeline}</td>
-                    </tr>
-                    <tr>
-                        <td>Project Details</td>
-                        <td>${details}</td>
-                    </tr>
-                </table>
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0;">
+                        <img src="https://krakenthekode.com/images/logo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
+                    </div>
+                    <div style="position: relative; z-index: 1;">
+                        <h2 style="color: #8A2BE2; margin-bottom: 20px; text-align: center;">New Quote Request</h2>
+                        
+                        <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Email</label>
+                                <div style="color: #ffffff; font-size: 16px;">${email}</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Project Type</label>
+                                <div style="color: #ffffff; font-size: 16px;">${project_type}</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Number of Pages</label>
+                                <div style="color: #ffffff; font-size: 16px;">${pages}</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Domain Requirements</label>
+                                <div style="color: #ffffff; font-size: 16px;">${domain}</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Timeline</label>
+                                <div style="color: #ffffff; font-size: 16px;">${timeline}</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Project Details</label>
+                                <div style="color: #ffffff; font-size: 16px; white-space: pre-wrap;">${details}</div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 20px; color: #8A2BE2; font-size: 12px;">
+                            This email was sent from the Kraken The Kode quote request form.
+                        </div>
+                    </div>
+                </div>
             `
         };
 
@@ -93,10 +106,31 @@ app.post('/submit-quote', async (req, res) => {
 
         // Send auto-response to the user
         const userMailOptions = {
-            from: process.env.EMAIL_USER,
+            from: `"Kraken The Kode" <${process.env.EMAIL_USER}>`,
             to: email,
             subject: 'Thank you for your quote request',
-            text: 'Thank you for your quote request! We will review your information and get back to you shortly.'
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0;">
+                        <img src="https://krakenthekode.com/images/logo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
+                    </div>
+                    <div style="position: relative; z-index: 1;">
+                        <h2 style="color: #8A2BE2; margin-bottom: 20px; text-align: center;">Thank You!</h2>
+                        <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6;">
+                                Thank you for your quote request! We have received your information and will review it shortly.
+                                Our team will get back to you as soon as possible with a detailed quote for your project.
+                            </p>
+                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin-top: 20px;">
+                                If you have any additional questions or information to add, please don't hesitate to reply to this email.
+                            </p>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px; color: #8A2BE2; font-size: 12px;">
+                            Kraken The Kode - Your Digital Solutions Partner
+                        </div>
+                    </div>
+                </div>
+            `
         };
 
         await transporter.sendMail(userMailOptions);
