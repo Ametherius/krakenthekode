@@ -104,8 +104,14 @@ app.post('/submit-quote', async (req, res) => {
     }
 });
 
-// Serve static files AFTER API routes
-app.use(express.static(path.join(__dirname)));
+// Serve static files for GET requests only
+app.use((req, res, next) => {
+    if (req.method === 'GET') {
+        express.static(path.join(__dirname))(req, res, next);
+    } else {
+        next();
+    }
+});
 
 // Add a catch-all route to serve the main HTML file
 app.get('*', (req, res) => {
