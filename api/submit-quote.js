@@ -10,41 +10,12 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Validation middleware
-const validateQuoteRequest = [
-    body('email').isEmail().normalizeEmail(),
-    body('project_type').trim().notEmpty(),
-    body('pages').isInt({ min: 1 }).toInt(),
-    body('domain').trim().notEmpty(),
-    body('timeline').trim().notEmpty(),
-    body('details').trim().notEmpty(),
-    // Honeypot validation
-    body('website').custom(value => {
-        if (value && value.length > 0) {
-            throw new Error('Bot detected');
-        }
-        return true;
-    }),
-    body('phone').custom(value => {
-        if (value && value.length > 0) {
-            throw new Error('Bot detected');
-        }
-        return true;
-    }),
-    body('name').custom(value => {
-        if (value && value.length > 0) {
-            throw new Error('Bot detected');
-        }
-        return true;
-    })
-];
-
 // For Vercel serverless functions
 module.exports = async (req, res) => {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+    res.setHeader('Access-Control-Allow-Origin', 'https://krakenthekode.com');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin');
 
     // Handle preflight request
@@ -59,28 +30,46 @@ module.exports = async (req, res) => {
         return;
     }
 
-    // Parse request body
-    let body;
     try {
-        body = JSON.parse(req.body);
-    } catch (e) {
-        body = req.body;
-    }
+        // Parse request body
+        const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
-    try {
-        // Check for validation errors
-        const errors = validationResult({ body });
-        if (!errors.isEmpty()) {
-            if (errors.array().some(err => err.msg === 'Bot detected')) {
-                console.log('Potential bot detected:', {
-                    ip: req.headers['x-forwarded-for'] || req.ip,
-                    headers: req.headers,
-                    body: body
-                });
-            }
+        // Validate request body
+        const errors = [];
+        
+        if (!body.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
+            errors.push('Invalid email address');
+        }
+        if (!body.project_type) {
+            errors.push('Project type is required');
+        }
+        if (!body.pages || isNaN(body.pages) || body.pages < 1) {
+            errors.push('Number of pages must be at least 1');
+        }
+        if (!body.domain) {
+            errors.push('Domain requirement is required');
+        }
+        if (!body.timeline) {
+            errors.push('Timeline is required');
+        }
+        if (!body.details) {
+            errors.push('Project details are required');
+        }
+
+        // Check honeypot fields
+        if (body.website || body.phone || body.name) {
+            console.log('Potential bot detected:', {
+                ip: req.headers['x-forwarded-for'] || req.ip,
+                headers: req.headers,
+                body: body
+            });
+            errors.push('Invalid form submission');
+        }
+
+        if (errors.length > 0) {
             return res.status(400).json({ 
                 error: 'Validation failed',
-                details: errors.array().map(err => err.msg)
+                details: errors
             });
         }
 
@@ -163,9 +152,9 @@ module.exports = async (req, res) => {
 
         res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('Error processing request:', error);
         res.status(500).json({ 
-            error: 'Error sending email',
+            error: 'Error processing request',
             details: error.message
         });
     }
