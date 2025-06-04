@@ -49,7 +49,7 @@ const validateQuoteRequest = [
 ];
 
 // Handle form submission
-app.post('/', validateQuoteRequest, async (req, res) => {
+app.post('/api/submit-quote', validateQuoteRequest, async (req, res) => {
     try {
         // Check for validation errors
         const errors = validationResult(req);

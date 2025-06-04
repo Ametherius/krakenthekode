@@ -21,6 +21,7 @@
     "routes": [
         {
             "src": "/api/submit-quote",
+            "methods": ["POST"],
             "dest": "/api/submit-quote.js"
         },
         {
