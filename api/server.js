@@ -156,4 +156,6 @@ app.post('/api/submit-quote', validateQuoteRequest, async (req, res) => {
 });
 
 // For Vercel serverless functions
-module.exports = app; 
+module.exports = app;
+
+// Force redeploy for Vercel troubleshooting 
