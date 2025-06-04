@@ -18,6 +18,7 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin, Authorization');
     res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
+    res.setHeader('Content-Type', 'application/json');
 
     // Handle preflight request
     if (req.method === 'OPTIONS') {
@@ -39,7 +40,10 @@ module.exports = async (req, res) => {
         // Check if environment variables are set
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
             console.error('Missing email configuration');
-            throw new Error('Server configuration error');
+            return res.status(500).json({
+                error: 'Server configuration error',
+                details: 'Email configuration is missing'
+            });
         }
 
         // Parse request body
