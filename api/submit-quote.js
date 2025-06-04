@@ -16,16 +16,18 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', 'https://krakenthekode.com');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin, Authorization');
+    res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
 
     // Handle preflight request
     if (req.method === 'OPTIONS') {
-        res.status(200).end();
+        res.status(204).end();
         return;
     }
 
     // Only allow POST requests
     if (req.method !== 'POST') {
+        console.log('Method not allowed:', req.method);
         res.status(405).json({ error: 'Method not allowed' });
         return;
     }

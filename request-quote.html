@@ -165,8 +165,9 @@
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    'Origin': window.location.origin
+                    'Origin': 'https://krakenthekode.com'
                 },
+                credentials: 'include',
                 body: JSON.stringify(formData)
             })
             .then(response => {
