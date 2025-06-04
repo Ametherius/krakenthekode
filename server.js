@@ -9,7 +9,11 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:4000', 'https://krakenthekode.com'],
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
