@@ -7,7 +7,11 @@ const { body, validationResult } = require('express-validator');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 
 // Create a transporter
@@ -48,8 +52,11 @@ const validateQuoteRequest = [
     })
 ];
 
+// Handle OPTIONS request for CORS preflight
+app.options('/api/submit-quote', cors());
+
 // Handle form submission
-app.post('/api/submit-quote', validateQuoteRequest, async (req, res) => {
+app.post('/api/submit-quote', cors(), validateQuoteRequest, async (req, res) => {
     try {
         // Check for validation errors
         const errors = validationResult(req);
