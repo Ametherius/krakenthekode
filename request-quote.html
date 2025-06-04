@@ -156,6 +156,10 @@
                         formMessage.removeClass('alert-danger').addClass('alert alert-success mb-4');
                         formMessage.text('Thank you for your submission! We will get back to you shortly.');
                         form[0].reset();
+                        // Redirect to thank you page after 2 seconds
+                        setTimeout(function() {
+                            window.location.href = '/thank-you';
+                        }, 2000);
                     },
                     error: function(xhr, status, error) {
                         formMessage.removeClass('alert-success').addClass('alert alert-danger mb-4');

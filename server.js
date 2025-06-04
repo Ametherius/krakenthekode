@@ -213,7 +213,11 @@ app.use((req, res, next) => {
 
 // Add a catch-all route to serve the main HTML file
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'request-quote.html'));
+    if (req.path === '/thank-you') {
+        res.sendFile(path.join(__dirname, 'thank-you.html'));
+    } else {
+        res.sendFile(path.join(__dirname, 'request-quote.html'));
+    }
 });
 
 // Error handling middleware
