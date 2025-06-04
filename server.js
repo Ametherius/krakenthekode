@@ -62,40 +62,28 @@ app.post('/submit-quote', async (req, res) => {
                         <h2 style="color: #8A2BE2; margin-bottom: 20px; text-align: center;">New Quote Request</h2>
                         
                         <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Email</label>
-                                <div style="color: #ffffff; font-size: 16px;">${email}</div>
-                            </div>
+                            <p style="color: #8A2BE2; font-size: 14px; margin: 0 0 5px 0;">Email</p>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0 0 15px 0;">${email}</p>
                             
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Project Type</label>
-                                <div style="color: #ffffff; font-size: 16px;">${project_type}</div>
-                            </div>
+                            <p style="color: #8A2BE2; font-size: 14px; margin: 0 0 5px 0;">Project Type</p>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0 0 15px 0;">${project_type}</p>
                             
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Number of Pages</label>
-                                <div style="color: #ffffff; font-size: 16px;">${pages}</div>
-                            </div>
+                            <p style="color: #8A2BE2; font-size: 14px; margin: 0 0 5px 0;">Number of Pages</p>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0 0 15px 0;">${pages}</p>
                             
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Domain Requirements</label>
-                                <div style="color: #ffffff; font-size: 16px;">${domain}</div>
-                            </div>
+                            <p style="color: #8A2BE2; font-size: 14px; margin: 0 0 5px 0;">Domain Requirements</p>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0 0 15px 0;">${domain}</p>
                             
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Timeline</label>
-                                <div style="color: #ffffff; font-size: 16px;">${timeline}</div>
-                            </div>
+                            <p style="color: #8A2BE2; font-size: 14px; margin: 0 0 5px 0;">Timeline</p>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0 0 15px 0;">${timeline}</p>
                             
-                            <div style="margin-bottom: 15px;">
-                                <label style="display: block; color: #8A2BE2; font-size: 14px; margin-bottom: 5px;">Project Details</label>
-                                <div style="color: #ffffff; font-size: 16px; white-space: pre-wrap;">${details}</div>
-                            </div>
+                            <p style="color: #8A2BE2; font-size: 14px; margin: 0 0 5px 0;">Project Details</p>
+                            <p style="color: #ffffff; font-size: 16px; margin: 0 0 15px 0; white-space: pre-wrap;">${details}</p>
                         </div>
                         
-                        <div style="text-align: center; margin-top: 20px; color: #8A2BE2; font-size: 12px;">
+                        <p style="text-align: center; margin-top: 20px; color: #8A2BE2; font-size: 12px;">
                             This email was sent from the Kraken The Kode quote request form.
-                        </div>
+                        </p>
                     </div>
                 </div>
             `
@@ -117,17 +105,17 @@ app.post('/submit-quote', async (req, res) => {
                     <div style="position: relative; z-index: 1;">
                         <h2 style="color: #8A2BE2; margin-bottom: 20px; text-align: center;">Thank You!</h2>
                         <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6;">
+                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 0;">
                                 Thank you for your quote request! We have received your information and will review it shortly.
                                 Our team will get back to you as soon as possible with a detailed quote for your project.
                             </p>
-                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin-top: 20px;">
+                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 20px 0 0 0;">
                                 If you have any additional questions or information to add, please don't hesitate to reply to this email.
                             </p>
                         </div>
-                        <div style="text-align: center; margin-top: 20px; color: #8A2BE2; font-size: 12px;">
+                        <p style="text-align: center; margin-top: 20px; color: #8A2BE2; font-size: 12px;">
                             Kraken The Kode - Your Digital Solutions Partner
-                        </div>
+                        </p>
                     </div>
                 </div>
             `
