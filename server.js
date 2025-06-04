@@ -19,7 +19,7 @@ const limiter = rateLimit({
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:4000', 'https://krakenthekode.com'],
+    origin: '*',
     methods: ['GET', 'POST'],
     credentials: true
 }));
