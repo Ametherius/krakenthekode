@@ -140,20 +140,28 @@
                 const formMessage = $('#formMessage');
                 const submitButton = form.find('button[type="submit"]');
                 
-                submitButton.prop('disabled', true);
+                // Disable submit button and show loading state
+                submitButton.prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...');
+                formMessage.removeClass('alert-danger alert-success').addClass('d-none');
                 
                 const formData = {};
                 form.serializeArray().forEach(function(item) {
                     formData[item.name] = item.value;
                 });
 
+                // Get the current hostname and protocol
+                const protocol = window.location.protocol;
+                const hostname = window.location.hostname;
+                const port = window.location.port ? `:${window.location.port}` : '';
+                const baseUrl = `${protocol}//${hostname}${port}`;
+
                 $.ajax({
-                    url: '/submit-quote',
+                    url: `${baseUrl}/submit-quote`,
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify(formData),
                     success: function(response) {
-                        formMessage.removeClass('alert-danger').addClass('alert alert-success mb-4');
+                        formMessage.removeClass('alert-danger d-none').addClass('alert alert-success mb-4');
                         formMessage.text('Thank you for your submission! We will get back to you shortly.');
                         form[0].reset();
                         // Redirect to thank you page after 2 seconds
@@ -162,11 +170,24 @@
                         }, 2000);
                     },
                     error: function(xhr, status, error) {
-                        formMessage.removeClass('alert-success').addClass('alert alert-danger mb-4');
-                        formMessage.text(error || 'An error occurred. Please try again.');
+                        formMessage.removeClass('alert-success d-none').addClass('alert alert-danger mb-4');
+                        let errorMessage = 'An error occurred. Please try again.';
+                        
+                        if (xhr.responseJSON && xhr.responseJSON.error) {
+                            errorMessage = xhr.responseJSON.error;
+                        } else if (xhr.status === 0) {
+                            errorMessage = 'Unable to connect to the server. Please check your internet connection.';
+                        } else if (xhr.status === 404) {
+                            errorMessage = 'The form submission endpoint was not found. Please try again later.';
+                        } else if (xhr.status === 405) {
+                            errorMessage = 'The form submission method is not allowed. Please try again later.';
+                        }
+                        
+                        formMessage.text(errorMessage);
                     },
                     complete: function() {
-                        submitButton.prop('disabled', false);
+                        // Re-enable submit button and restore original text
+                        submitButton.prop('disabled', false).text('Submit Request');
                     }
                 });
             });
