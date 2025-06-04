@@ -98,6 +98,13 @@
                                 <textarea id="details" name="details" rows="5" class="form-control" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
                             </div>
 
+                            <!-- Honeypot fields - hidden from real users but visible to bots -->
+                            <div style="display: none !important;">
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                                <input type="text" name="phone" tabindex="-1" autocomplete="off">
+                                <input type="text" name="name" tabindex="-1" autocomplete="off">
+                            </div>
+
                             <div class="form-check mb-4">
                                 <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
                                 <label class="form-check-label" for="terms">*I acknowledge that all of the information provided is accurate and correct.</label>
