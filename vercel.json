@@ -21,7 +21,14 @@
     "routes": [
         {
             "src": "/api/submit-quote",
-            "dest": "/api/submit-quote.js"
+            "dest": "/api/submit-quote.js",
+            "methods": ["POST", "OPTIONS"],
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type, Accept, Origin, Authorization",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Access-Control-Allow-Credentials": "true"
+            }
         },
         {
             "src": "/(.*)",
