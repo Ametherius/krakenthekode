@@ -128,7 +128,7 @@ app.post('/submit-quote', limiter, validateQuoteRequest, async (req, res) => {
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0;">
-                        <img src="https://krakenthekode.com/images/logo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
+                        <img src="https://krakenthekode.com/images/background.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
                     </div>
                     <div style="position: relative; z-index: 1;">
                         <h2 style="color:rgb(43, 0, 73); margin-bottom: 20px; text-align: center;">New Quote Request</h2>
@@ -172,10 +172,10 @@ app.post('/submit-quote', limiter, validateQuoteRequest, async (req, res) => {
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0;">
-                        <img src="https://krakenthekode.com/images/logo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
+                        <img src="https://krakenthekode.com/images/brandlogo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
                     </div>
                     <div style="position: relative; z-index: 1;">
-                        <h2 style="color: #4B0082; margin-bottom: 20px; text-align: center;">Thank You!</h2>
+                        <h2 style="color: rgb(43, 0, 73); margin-bottom: 20px; text-align: center;">Thank You!</h2>
                         <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
                             <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 0;">
                                 Thank you for your quote request! We have received your information and will review it shortly.
@@ -185,8 +185,8 @@ app.post('/submit-quote', limiter, validateQuoteRequest, async (req, res) => {
                                 If you have any additional questions or information to add, please don't hesitate to reply to this email.
                             </p>
                         </div>
-                        <p style="text-align: center; margin-top: 20px; color: #4B0082; font-size: 12px;">
-                            Kraken The Kode - Your Digital Solutions Partner
+                        <p style="text-align: center; margin-top: 20px; color: rgb(43, 0, 73); font-size: 12px;">
+                            Kraken The Kode
                         </p>
                     </div>
                 </div>
