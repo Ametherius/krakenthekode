@@ -6,14 +6,21 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Middleware
 app.use(cors());
-app.use(express.static('./'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
+
+// Debug middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    console.log('Request headers:', req.headers);
+    console.log('Request body:', req.body);
+    next();
+});
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
@@ -33,6 +40,7 @@ app.post('/submit-quote', async (req, res) => {
         const { email, project_type, pages, domain, timeline, details } = req.body;
 
         if (!email || !project_type || !pages || !domain || !timeline || !details) {
+            console.log('Missing required fields:', { email, project_type, pages, domain, timeline, details });
             return res.status(400).json({ error: 'All fields are required' });
         }
 
@@ -96,7 +104,7 @@ app.post('/submit-quote', async (req, res) => {
     }
 });
 
-// Serve static files
+// Serve static files AFTER API routes
 app.use(express.static(path.join(__dirname)));
 
 // Add a catch-all route to serve the main HTML file
@@ -104,6 +112,21 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'request-quote.html'));
 });
 
-app.listen(port, () => {
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error('Server error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+});
+
+// Start server with error handling
+const server = app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
+}).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`Port ${port} is already in use. Please try a different port.`);
+        process.exit(1);
+    } else {
+        console.error('Server error:', err);
+        process.exit(1);
+    }
 }); 
