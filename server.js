@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
 const validateQuoteRequest = [
     body('email').isEmail().normalizeEmail(),
     body('project_type').trim().notEmpty(),
-    body('pages').trim().notEmpty(),
+    body('pages').isInt({ min: 1 }).toInt(),
     body('domain').trim().notEmpty(),
     body('timeline').trim().notEmpty(),
     body('details').trim().notEmpty(),
