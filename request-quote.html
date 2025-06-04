@@ -151,7 +151,12 @@
             // Get form data
             const formData = {};
             new FormData(form).forEach((value, key) => {
-                formData[key] = value;
+                // Convert pages to number if it's the pages field
+                if (key === 'pages') {
+                    formData[key] = parseInt(value, 10);
+                } else {
+                    formData[key] = value;
+                }
             });
 
             // Send to API
@@ -162,7 +167,14 @@
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.error || 'An error occurred');
+                    });
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.error) {
                     throw new Error(data.error);
@@ -177,6 +189,7 @@
                 }, 2000);
             })
             .catch(error => {
+                console.error('Form submission error:', error);
                 formMessage.classList.remove('alert-success', 'd-none');
                 formMessage.classList.add('alert-danger');
                 formMessage.textContent = error.message || 'An error occurred. Please try again.';
