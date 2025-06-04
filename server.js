@@ -62,7 +62,10 @@ app.post('/api/submit-quote', validateQuoteRequest, async (req, res) => {
                     body: req.body
                 });
             }
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({ 
+                error: 'Validation failed',
+                details: errors.array().map(err => err.msg)
+            });
         }
 
         const { email, project_type, pages, domain, timeline, details } = req.body;
@@ -145,7 +148,10 @@ app.post('/api/submit-quote', validateQuoteRequest, async (req, res) => {
         res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
         console.error('Error sending email:', error);
-        res.status(500).json({ error: 'Error sending email' });
+        res.status(500).json({ 
+            error: 'Error sending email',
+            details: error.message
+        });
     }
 });
 
