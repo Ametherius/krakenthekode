@@ -1,18 +1,5 @@
-const express = require('express');
 const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const { body, validationResult } = require('express-validator');
-
-const app = express();
-
-// Middleware
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
-}));
-app.use(bodyParser.json());
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
@@ -52,11 +39,26 @@ const validateQuoteRequest = [
     })
 ];
 
-// Handle OPTIONS request for CORS preflight
-app.options('/api/submit-quote', cors());
+// For Vercel serverless functions
+module.exports = async (req, res) => {
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-// Handle form submission
-app.post('/api/submit-quote', cors(), validateQuoteRequest, async (req, res) => {
+    // Handle preflight request
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+
+    // Only allow POST requests
+    if (req.method !== 'POST') {
+        res.status(405).json({ error: 'Method not allowed' });
+        return;
+    }
+
     try {
         // Check for validation errors
         const errors = validationResult(req);
@@ -159,7 +161,4 @@ app.post('/api/submit-quote', cors(), validateQuoteRequest, async (req, res) => 
             details: error.message
         });
     }
-});
-
-// For Vercel serverless functions
-module.exports = app; 
+}; 

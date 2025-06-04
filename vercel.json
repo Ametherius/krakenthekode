@@ -21,12 +21,6 @@
     "routes": [
         {
             "src": "/api/submit-quote",
-            "methods": ["POST", "OPTIONS"],
-            "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "Content-Type",
-                "Access-Control-Allow-Methods": "POST, OPTIONS"
-            },
             "dest": "/api/submit-quote.js"
         },
         {
