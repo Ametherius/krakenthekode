@@ -23,11 +23,11 @@ const transporter = nodemailer.createTransport({
 // Validation middleware
 const validateQuoteRequest = [
     body('email').isEmail().normalizeEmail(),
-    body('project_type').trim().isLength({ min: 2, max: 100 }),
-    body('pages').trim().isLength({ min: 1, max: 50 }),
-    body('domain').trim().isLength({ min: 2, max: 200 }),
-    body('timeline').trim().isLength({ min: 2, max: 100 }),
-    body('details').trim().isLength({ min: 10, max: 2000 }),
+    body('project_type').trim().notEmpty(),
+    body('pages').trim().notEmpty(),
+    body('domain').trim().notEmpty(),
+    body('timeline').trim().notEmpty(),
+    body('details').trim().notEmpty(),
     // Honeypot validation
     body('website').custom(value => {
         if (value && value.length > 0) {
