@@ -45,7 +45,7 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin');
 
     // Handle preflight request
     if (req.method === 'OPTIONS') {
@@ -59,15 +59,23 @@ module.exports = async (req, res) => {
         return;
     }
 
+    // Parse request body
+    let body;
+    try {
+        body = JSON.parse(req.body);
+    } catch (e) {
+        body = req.body;
+    }
+
     try {
         // Check for validation errors
-        const errors = validationResult(req);
+        const errors = validationResult({ body });
         if (!errors.isEmpty()) {
             if (errors.array().some(err => err.msg === 'Bot detected')) {
                 console.log('Potential bot detected:', {
-                    ip: req.ip,
+                    ip: req.headers['x-forwarded-for'] || req.ip,
                     headers: req.headers,
-                    body: req.body
+                    body: body
                 });
             }
             return res.status(400).json({ 
@@ -76,7 +84,7 @@ module.exports = async (req, res) => {
             });
         }
 
-        const { email, project_type, pages, domain, timeline, details } = req.body;
+        const { email, project_type, pages, domain, timeline, details } = body;
 
         // Email content
         const mailOptions = {
