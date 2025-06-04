@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport({
 module.exports = async (req, res) => {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', 'https://krakenthekode.com');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins for testing
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin, Authorization');
     res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
 
@@ -28,8 +28,11 @@ module.exports = async (req, res) => {
     // Only allow POST requests
     if (req.method !== 'POST') {
         console.log('Method not allowed:', req.method);
-        res.status(405).json({ error: 'Method not allowed' });
-        return;
+        return res.status(405).json({ 
+            error: 'Method not allowed',
+            method: req.method,
+            allowed: ['POST']
+        });
     }
 
     try {
@@ -40,8 +43,17 @@ module.exports = async (req, res) => {
         }
 
         // Parse request body
-        const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-        console.log('Received form submission:', { ...body, email: '[REDACTED]' });
+        let body;
+        try {
+            body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+            console.log('Received form submission:', { ...body, email: '[REDACTED]' });
+        } catch (parseError) {
+            console.error('Error parsing request body:', parseError);
+            return res.status(400).json({ 
+                error: 'Invalid request body',
+                details: 'Could not parse JSON body'
+            });
+        }
 
         // Validate request body
         const errors = [];

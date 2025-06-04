@@ -164,19 +164,16 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Origin': 'https://krakenthekode.com'
+                    'Accept': 'application/json'
                 },
-                credentials: 'include',
                 body: JSON.stringify(formData)
             })
-            .then(response => {
+            .then(async response => {
+                const data = await response.json();
                 if (!response.ok) {
-                    return response.json().then(err => {
-                        throw new Error(err.error || 'An error occurred');
-                    });
+                    throw new Error(data.error || 'An error occurred');
                 }
-                return response.json();
+                return data;
             })
             .then(data => {
                 if (data.error) {
