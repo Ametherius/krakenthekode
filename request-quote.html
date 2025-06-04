@@ -196,6 +196,11 @@
                 formMessage.classList.remove('alert-success', 'd-none');
                 formMessage.classList.add('alert-danger');
                 formMessage.textContent = error.message || 'An error occurred. Please try again.';
+                // Log additional error details to console for debugging
+                if (error.response) {
+                    console.error('Response status:', error.response.status);
+                    console.error('Response headers:', error.response.headers);
+                }
             })
             .finally(() => {
                 // Re-enable submit button and restore original text

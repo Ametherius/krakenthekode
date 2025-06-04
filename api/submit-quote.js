@@ -33,8 +33,15 @@ module.exports = async (req, res) => {
     }
 
     try {
+        // Check if environment variables are set
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('Missing email configuration');
+            throw new Error('Server configuration error');
+        }
+
         // Parse request body
         const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+        console.log('Received form submission:', { ...body, email: '[REDACTED]' });
 
         // Validate request body
         const errors = [];
@@ -63,12 +70,13 @@ module.exports = async (req, res) => {
             console.log('Potential bot detected:', {
                 ip: req.headers['x-forwarded-for'] || req.ip,
                 headers: req.headers,
-                body: body
+                body: { ...body, email: '[REDACTED]' }
             });
             errors.push('Invalid form submission');
         }
 
         if (errors.length > 0) {
+            console.log('Validation errors:', errors);
             return res.status(400).json({ 
                 error: 'Validation failed',
                 details: errors
@@ -79,7 +87,7 @@ module.exports = async (req, res) => {
 
         // Email content
         const mailOptions = {
-            from: email,
+            from: process.env.EMAIL_USER, // Use configured email as sender
             to: 'info.krakenthekode@gmail.com',
             subject: 'New Quote Request',
             html: `
@@ -120,10 +128,11 @@ module.exports = async (req, res) => {
 
         // Send email
         await transporter.sendMail(mailOptions);
+        console.log('Admin notification email sent successfully');
 
         // Send auto-response to the user
         const userMailOptions = {
-            from: email,
+            from: process.env.EMAIL_USER, // Use configured email as sender
             to: email,
             subject: 'Thank you for your quote request',
             html: `
@@ -151,6 +160,7 @@ module.exports = async (req, res) => {
         };
 
         await transporter.sendMail(userMailOptions);
+        console.log('User confirmation email sent successfully');
 
         res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
