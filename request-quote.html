@@ -49,7 +49,7 @@
                 <div class="col-lg-8">
                     <h1 class="text-center mb-5">Request Your Quote</h1>
                     <div class="quote-form">
-                        <form id="quoteForm" method="POST">
+                        <form id="quoteForm" action="/api/submit-quote" method="POST">
                             <div id="formMessage" class="alert d-none mb-4"></div>
                             <div class="mb-4">
                                 <label for="email" class="form-label">Email Address*</label>
@@ -148,85 +148,8 @@
             formMessage.classList.add('d-none');
             formMessage.classList.remove('alert-danger', 'alert-success');
 
-            // Get form data
-            const formData = {};
-            new FormData(form).forEach((value, key) => {
-                // Convert pages to number if it's the pages field
-                if (key === 'pages') {
-                    formData[key] = parseInt(value, 10);
-                } else {
-                    formData[key] = value;
-                }
-            });
-
-            // Send to API
-            fetch('/api/submit-quote', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                credentials: 'omit',
-                body: JSON.stringify(formData)
-            })
-            .then(async response => {
-                console.log('Response status:', response.status);
-                console.log('Response headers:', Object.fromEntries(response.headers.entries()));
-                
-                const contentType = response.headers.get('content-type');
-                console.log('Content-Type:', contentType);
-                
-                let data;
-                try {
-                    const text = await response.text();
-                    console.log('Raw response:', text);
-                    
-                    if (!contentType || !contentType.includes('application/json')) {
-                        console.error('Invalid content type:', contentType);
-                        throw new Error('Server returned non-JSON response');
-                    }
-                    
-                    try {
-                        data = JSON.parse(text);
-                    } catch (parseError) {
-                        console.error('JSON parse error:', parseError);
-                        throw new Error('Invalid JSON response from server');
-                    }
-                    
-                    if (!response.ok) {
-                        throw new Error(data.error || data.details || 'Server error');
-                    }
-                    
-                    return data;
-                } catch (error) {
-                    console.error('Response processing error:', error);
-                    throw error;
-                }
-            })
-            .then(data => {
-                if (data.error) {
-                    throw new Error(data.error);
-                }
-                formMessage.classList.remove('alert-danger', 'd-none');
-                formMessage.classList.add('alert-success');
-                formMessage.textContent = 'Thank you for your submission! We will get back to you shortly.';
-                form.reset();
-                // Redirect to thank you page after 2 seconds
-                setTimeout(() => {
-                    window.location.href = '/thank-you';
-                }, 2000);
-            })
-            .catch(error => {
-                console.error('Form submission error:', error);
-                formMessage.classList.remove('alert-success', 'd-none');
-                formMessage.classList.add('alert-danger');
-                formMessage.textContent = error.message || 'An error occurred. Please try again.';
-            })
-            .finally(() => {
-                // Re-enable submit button and restore original text
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit Request';
-            });
+            // Submit the form
+            form.submit();
         });
     </script>
 </body>
