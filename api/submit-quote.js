@@ -25,7 +25,9 @@ module.exports = async (req, res) => {
             return;
         }
 
-        const { email, project_type, pages, domain, timeline, details } = req.body;
+        // Get form data
+        const formData = req.body;
+        const { email, project_type, pages, domain, timeline, details } = formData;
 
         // Basic validation
         if (!email || !project_type || !pages || !domain || !timeline || !details) {
@@ -108,8 +110,21 @@ module.exports = async (req, res) => {
 
         await transporter.sendMail(userMailOptions);
 
-        // Redirect to thank you page
-        res.redirect('/thank-you');
+        // Send HTML response with redirect
+        res.setHeader('Content-Type', 'text/html');
+        res.send(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta http-equiv="refresh" content="0;url=/thank-you">
+                <title>Redirecting...</title>
+            </head>
+            <body>
+                <p>Redirecting to thank you page...</p>
+                <script>window.location.href = '/thank-you';</script>
+            </body>
+            </html>
+        `);
     } catch (error) {
         console.error('Error processing request:', error);
         res.status(500).send('Error processing request');
