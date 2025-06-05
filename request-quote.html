@@ -182,6 +182,7 @@
                     console.log('Raw response:', text);
                     
                     if (!contentType || !contentType.includes('application/json')) {
+                        console.error('Invalid content type:', contentType);
                         throw new Error('Server returned non-JSON response');
                     }
                     

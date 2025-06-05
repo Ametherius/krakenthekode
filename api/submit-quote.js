@@ -13,12 +13,14 @@ const transporter = nodemailer.createTransport({
 // For Vercel serverless functions
 module.exports = async (req, res) => {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin, Authorization');
     res.setHeader('Access-Control-Max-Age', '86400');
-    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    
+    // Always set JSON content type
+    res.setHeader('Content-Type', 'application/json');
 
     // Handle preflight request
     if (req.method === 'OPTIONS') {
