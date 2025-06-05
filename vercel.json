@@ -2,11 +2,15 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/submit-quote.js",
-            "use": "@vercel/node"
+            "src": "api/submit-quote.py",
+            "use": "@vercel/python"
         },
         {
             "src": "*.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "*.js",
             "use": "@vercel/static"
         },
         {
@@ -21,7 +25,7 @@
     "routes": [
         {
             "src": "/api/submit-quote",
-            "dest": "/api/submit-quote.js",
+            "dest": "/api/submit-quote.py",
             "methods": ["POST", "OPTIONS"],
             "headers": {
                 "Access-Control-Allow-Origin": "*",
