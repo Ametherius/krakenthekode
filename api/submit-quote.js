@@ -11,6 +11,18 @@ const transporter = nodemailer.createTransport({
 
 // For Vercel serverless functions
 module.exports = async (req, res) => {
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Content-Type', 'application/json');
+
+    // Handle preflight request
+    if (req.method === 'OPTIONS') {
+        res.status(204).end();
+        return;
+    }
+
     console.log('Received request:', {
         method: req.method,
         headers: req.headers,
@@ -20,7 +32,7 @@ module.exports = async (req, res) => {
     // Only allow POST requests
     if (req.method !== 'POST') {
         console.log('Method not allowed:', req.method);
-        res.status(405).send('Method not allowed');
+        res.status(405).json({ error: 'Method not allowed' });
         return;
     }
 
@@ -28,7 +40,7 @@ module.exports = async (req, res) => {
         // Check if environment variables are set
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
             console.error('Missing email configuration');
-            res.status(500).send('Server configuration error');
+            res.status(500).json({ error: 'Server configuration error' });
             return;
         }
 
@@ -44,7 +56,7 @@ module.exports = async (req, res) => {
             console.log('Parsed form data:', { ...formData, email: '[REDACTED]' });
         } catch (error) {
             console.error('Error parsing form data:', error);
-            res.status(400).send('Invalid form data');
+            res.status(400).json({ error: 'Invalid form data' });
             return;
         }
 
@@ -60,7 +72,7 @@ module.exports = async (req, res) => {
                 timeline: !!timeline, 
                 details: !!details 
             });
-            res.status(400).send('All fields are required');
+            res.status(400).json({ error: 'All fields are required' });
             return;
         }
 
@@ -142,7 +154,6 @@ module.exports = async (req, res) => {
         console.log('User confirmation email sent successfully');
 
         // Send success response
-        res.setHeader('Content-Type', 'application/json');
         res.status(200).json({ success: true });
     } catch (error) {
         console.error('Error processing request:', error);

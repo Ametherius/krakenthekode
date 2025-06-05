@@ -22,9 +22,12 @@
         {
             "src": "/api/submit-quote",
             "dest": "/api/submit-quote.js",
-            "methods": ["POST"],
+            "methods": ["POST", "OPTIONS"],
             "headers": {
-                "Content-Type": "text/html"
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Content-Type": "application/json"
             }
         },
         {
