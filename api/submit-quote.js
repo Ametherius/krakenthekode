@@ -11,8 +11,15 @@ const transporter = nodemailer.createTransport({
 
 // For Vercel serverless functions
 module.exports = async (req, res) => {
+    console.log('Received request:', {
+        method: req.method,
+        headers: req.headers,
+        body: req.body
+    });
+
     // Only allow POST requests
     if (req.method !== 'POST') {
+        console.log('Method not allowed:', req.method);
         res.status(405).send('Method not allowed');
         return;
     }
@@ -25,12 +32,34 @@ module.exports = async (req, res) => {
             return;
         }
 
-        // Get form data
-        const formData = req.body;
+        // Parse form data
+        let formData;
+        try {
+            if (req.headers['content-type']?.includes('application/json')) {
+                formData = req.body;
+            } else {
+                // Handle URL-encoded form data
+                formData = req.body;
+            }
+            console.log('Parsed form data:', { ...formData, email: '[REDACTED]' });
+        } catch (error) {
+            console.error('Error parsing form data:', error);
+            res.status(400).send('Invalid form data');
+            return;
+        }
+
         const { email, project_type, pages, domain, timeline, details } = formData;
 
         // Basic validation
         if (!email || !project_type || !pages || !domain || !timeline || !details) {
+            console.log('Validation failed:', { 
+                email: !!email, 
+                project_type: !!project_type, 
+                pages: !!pages, 
+                domain: !!domain, 
+                timeline: !!timeline, 
+                details: !!details 
+            });
             res.status(400).send('All fields are required');
             return;
         }
@@ -78,6 +107,7 @@ module.exports = async (req, res) => {
 
         // Send email
         await transporter.sendMail(mailOptions);
+        console.log('Admin notification email sent successfully');
 
         // Send auto-response to the user
         const userMailOptions = {
@@ -109,24 +139,13 @@ module.exports = async (req, res) => {
         };
 
         await transporter.sendMail(userMailOptions);
+        console.log('User confirmation email sent successfully');
 
-        // Send HTML response with redirect
-        res.setHeader('Content-Type', 'text/html');
-        res.send(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta http-equiv="refresh" content="0;url=/thank-you">
-                <title>Redirecting...</title>
-            </head>
-            <body>
-                <p>Redirecting to thank you page...</p>
-                <script>window.location.href = '/thank-you';</script>
-            </body>
-            </html>
-        `);
+        // Send success response
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json({ success: true });
     } catch (error) {
         console.error('Error processing request:', error);
-        res.status(500).send('Error processing request');
+        res.status(500).json({ error: 'Error processing request' });
     }
 }; 
