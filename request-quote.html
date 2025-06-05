@@ -170,25 +170,36 @@
                 body: JSON.stringify(formData)
             })
             .then(async response => {
-                const contentType = response.headers.get('content-type');
-                console.log('Response headers:', Object.fromEntries(response.headers.entries()));
                 console.log('Response status:', response.status);
+                console.log('Response headers:', Object.fromEntries(response.headers.entries()));
                 
-                if (!contentType || !contentType.includes('application/json')) {
-                    const text = await response.text();
-                    console.error('Non-JSON response:', text);
-                    throw new Error('Server returned an invalid response format');
-                }
+                const contentType = response.headers.get('content-type');
+                console.log('Content-Type:', contentType);
                 
+                let data;
                 try {
-                    const data = await response.json();
-                    if (!response.ok) {
-                        throw new Error(data.error || data.details || 'An error occurred');
+                    const text = await response.text();
+                    console.log('Raw response:', text);
+                    
+                    if (!contentType || !contentType.includes('application/json')) {
+                        throw new Error('Server returned non-JSON response');
                     }
+                    
+                    try {
+                        data = JSON.parse(text);
+                    } catch (parseError) {
+                        console.error('JSON parse error:', parseError);
+                        throw new Error('Invalid JSON response from server');
+                    }
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || data.details || 'Server error');
+                    }
+                    
                     return data;
-                } catch (parseError) {
-                    console.error('Error parsing JSON response:', parseError);
-                    throw new Error('Failed to parse server response');
+                } catch (error) {
+                    console.error('Response processing error:', error);
+                    throw error;
                 }
             })
             .then(data => {

@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept, Origin, Authorization');
     res.setHeader('Access-Control-Max-Age', '86400');
-    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
 
     // Handle preflight request
     if (req.method === 'OPTIONS') {
@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
 
         // Email content
         const mailOptions = {
-            from: process.env.EMAIL_USER, // Use configured email as sender
+            from: process.env.EMAIL_USER,
             to: 'info.krakenthekode@gmail.com',
             subject: 'New Quote Request',
             html: `
@@ -142,46 +142,57 @@ module.exports = async (req, res) => {
             `
         };
 
-        // Send email
-        await transporter.sendMail(mailOptions);
-        console.log('Admin notification email sent successfully');
+        try {
+            // Send email
+            await transporter.sendMail(mailOptions);
+            console.log('Admin notification email sent successfully');
 
-        // Send auto-response to the user
-        const userMailOptions = {
-            from: process.env.EMAIL_USER, // Use configured email as sender
-            to: email,
-            subject: 'Thank you for your quote request',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px; position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0;">
-                        <img src="https://krakenthekode.com/images/brandlogo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
-                    </div>
-                    <div style="position: relative; z-index: 1;">
-                        <h2 style="color: #2b0049; margin-bottom: 20px; text-align: center;">Thank You!</h2>
-                        <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 0;">
-                                Thank you for your quote request! We have received your information and will review it shortly.
-                                Our team will get back to you as soon as possible with a detailed quote for your project.
-                            </p>
-                            <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 20px 0 0 0;">
-                                If you have any additional questions or information to add, please don't hesitate to reply to this email.
+            // Send auto-response to the user
+            const userMailOptions = {
+                from: process.env.EMAIL_USER,
+                to: email,
+                subject: 'Thank you for your quote request',
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #1a1a1a; border-radius: 8px; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.05; z-index: 0;">
+                            <img src="https://krakenthekode.com/images/brandlogo.png" alt="Kraken The Kode" style="width: 400px; height: auto;">
+                        </div>
+                        <div style="position: relative; z-index: 1;">
+                            <h2 style="color: #2b0049; margin-bottom: 20px; text-align: center;">Thank You!</h2>
+                            <div style="background-color: #2d2d2d; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                                <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 0;">
+                                    Thank you for your quote request! We have received your information and will review it shortly.
+                                    Our team will get back to you as soon as possible with a detailed quote for your project.
+                                </p>
+                                <p style="color: #ffffff; font-size: 16px; line-height: 1.6; margin: 20px 0 0 0;">
+                                    If you have any additional questions or information to add, please don't hesitate to reply to this email.
+                                </p>
+                            </div>
+                            <p style="text-align: center; margin-top: 20px; color: #2b0049; font-size: 12px;">
+                                Kraken The Kode
                             </p>
                         </div>
-                        <p style="text-align: center; margin-top: 20px; color: #2b0049; font-size: 12px;">
-                            Kraken The Kode
-                        </p>
                     </div>
-                </div>
-            `
-        };
+                `
+            };
 
-        await transporter.sendMail(userMailOptions);
-        console.log('User confirmation email sent successfully');
+            await transporter.sendMail(userMailOptions);
+            console.log('User confirmation email sent successfully');
 
-        res.status(200).json({ message: 'Email sent successfully' });
+            return res.status(200).json({ 
+                success: true,
+                message: 'Email sent successfully' 
+            });
+        } catch (emailError) {
+            console.error('Error sending email:', emailError);
+            return res.status(500).json({ 
+                error: 'Error sending email',
+                details: emailError.message
+            });
+        }
     } catch (error) {
         console.error('Error processing request:', error);
-        res.status(500).json({ 
+        return res.status(500).json({ 
             error: 'Error processing request',
             details: error.message
         });
