@@ -38,7 +38,12 @@
 
     <div class="container col-md-6 py-5">
         
-        <form action="https://formsubmit.co/info.krakenthekode@gmail.com" method="POST" class="quote-form">
+        <form action="https://formsubmit.co/info.krakenthekode@gmail.com" method="POST" class="quote-form" enctype="multipart/form-data">
+            <input type="hidden" name="_next" value="https://krakenthekode.com/thank-you">
+            <input type="hidden" name="_subject" value="New Quote Request">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_autoresponse" value="Thank you for your request! We will get back to you as soon as possible.">
             <h1>Request a Quote</h1>
             <div class="form-group ">
                 <label for="name">Name*</label>
