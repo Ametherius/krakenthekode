@@ -53,6 +53,9 @@ body {
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Animations */
@@ -250,6 +253,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-size: 200% 200%;
+    }
+    
     #fixed {
         background-image: url('../images/phone-bg.png');
     }
