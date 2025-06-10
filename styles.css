@@ -416,43 +416,27 @@ body {
 .quote-form {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 100px;
+    width: 100%;
 }
 
-.form-control {
-    color: white;
-}
-
-.form-control-color {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-}
 .quote-form h1 {
     color: var(--color-white);
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-}
-
-.quote-form button {
-    border-radius: 0%; 
+    font-size: 2rem;
 }
 
 .quote-form .form-label {
     font-weight: 600;
     color: var(--color-white);
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.btn-outline-light {
-    border-radius: 0%;
-    border: 2px solid white;
+    font-size: 1rem;
 }
 
 .quote-form .form-control,
@@ -462,17 +446,20 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    padding: 0.75rem;
 }
 
 .quote-form .form-control:focus,
 .quote-form .form-select:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.9);
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
 }
 
 .quote-form .form-control::placeholder {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .quote-form textarea.form-control {
@@ -481,16 +468,17 @@ body {
 }
 
 .quote-form .btn-primary {
-    padding: 1rem 2.5rem;
+    padding: 0.75rem 2rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
     background: var(--color-primary);
     border: none;
     box-shadow: 0 4px 15px rgba(82, 0, 115, 0.2);
+    width: 100%;
 }
 
 .quote-form .btn-primary:hover {
@@ -500,20 +488,20 @@ body {
 }
 
 .quote-form .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .quote-form .form-select {
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: var(--color-white);
     padding: 0.75rem;
-    border-radius: 5px;
+    border-radius: 0%;
     transition: var(--transition-base);
 }
 
 .quote-form .form-select:focus {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: var(--color-primary);
     box-shadow: 0 0 0 0.25rem rgba(82, 0, 115, 0.25);
     color: var(--color-white);
@@ -531,15 +519,32 @@ body {
 
 @media (max-width: 768px) {
     .quote-form {
-        padding: 2rem;
+        padding: 1.5rem;
+        margin-top: 80px;
     }
     
     .quote-form h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .quote-form .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .quote-form .form-control,
+    .quote-form .form-select {
+        padding: 0.6rem;
+        font-size: 0.95rem;
     }
     
     .quote-form .btn-primary {
-        width: 100%;
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .quote-form .form-label {
+        font-size: 0.95rem;
     }
 }
 
