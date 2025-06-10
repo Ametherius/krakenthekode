@@ -40,16 +40,16 @@
     box-sizing: border-box;
 }
 
-html, body {
-    min-height: 100vh;
+html {
+    min-height: 100%;
     width: 100%;
-    overflow-x: hidden;
 }
 
 body {
     font-family: var(--font-primary);
     color: var(--color-white);
-    background: linear-gradient(-45deg, var(--color-dark), var(--color-primary-light), var(--color-primary), var(--color-dark));
+    background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000);
+    background-attachment: fixed;
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     position: relative;
@@ -254,7 +254,10 @@ body {
 
 @media (max-width: 768px) {
     body {
+        background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000);
+        background-attachment: fixed;
         background-size: 200% 200%;
+        background-position: center;
     }
     
     #fixed {
@@ -429,6 +432,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 100px;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .quote-form h1 {
