@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraken The Kode - Request Quote</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="./">
+                <img src="/images/brandlogo.png" alt="Kraken The Kode" width="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-white fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./quote">Request a Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="fixed"></div>
+
+    <div class="container col-md-6 py-5">
+        
+        <form action="https://formsubmit.co/info.krakenthekode@gmail.com" method="POST" class="quote-form">
+            <h1>Request a Quote</h1>
+            <div class="form-group ">
+                <label for="name">Name*</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Business Name*</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Project Type*</label>
+                <select class="form-control" id="project-type" name="project-type" required>
+                    <option value="website">Portfolio Website</option>
+                    <option value="app">Business Website</option>
+                    <option value="other">Landing Page</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pages">Number of Pages</label>
+                <input type="number" class="form-control" id="pages" name="pages" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Additional Information*</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-group col-md-12 d-flex justify-content-center">
+                <label for="files" class="btn btn-outline-light">Upload Your Logo/Branding (Optional)</label>
+                <input type="file" name="files" id="files" class="form-control" style="display: none;"  multiple>
+            </div>
+            <div class="form-group d-flex">
+                <div class="me-2">
+                    <label for="color1">Color 1</label>
+                    <input type="color" class="form-control form-control-color" id="color1" name="color1" value="#000000" required>
+                </div>
+                <div class="ms-2">
+                    <label for="color2">Color 2</label>
+                    <input type="color" class="form-control form-control-color" value="#000000" id="color2" name="color2" required>
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-light">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
