@@ -186,6 +186,11 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-outline-light {
+    border-radius: 0%;
+    border: 2px solid var(--color-white);
+}
+
 .btn-outline-light:hover {
     background-color: var(--color-white);
     color: var(--color-primary);
@@ -256,7 +261,7 @@ body {
     body {
         background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000);
         background-attachment: fixed;
-        background-size: 200% 200%;
+        background-size: 400% 400%;
         background-position: center;
     }
     
@@ -479,19 +484,6 @@ body {
     resize: vertical;
 }
 
-.quote-form .btn-primary {
-    padding: 0.75rem 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background: var(--color-primary);
-    border: none;
-    box-shadow: 0 4px 15px rgba(82, 0, 115, 0.2);
-    width: 100%;
-}
 
 .quote-form .btn-primary:hover {
     transform: translateY(-2px);
