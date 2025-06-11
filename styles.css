@@ -249,7 +249,7 @@ body {
     height: 100%;
     min-height: 100vh;
     background-image: url('../images/background.png');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
@@ -267,6 +267,9 @@ body {
     
     #fixed {
         background-image: url('../images/phone-bg.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
 
@@ -426,6 +429,8 @@ body {
     position: relative;
     z-index: 1;
     padding: 100px 0;
+    background: transparent;
+    min-height: 100vh;
 }
 
 .quote-form {
