@@ -51,7 +51,6 @@ body {
     background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000) !important;
     background-attachment: fixed !important;
     background-size: 400% 400% !important;
-    animation: gradientAnimation 15s ease infinite !important;
     position: relative;
     min-height: 100vh !important;
     width: 100%;
