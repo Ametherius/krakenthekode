@@ -40,26 +40,59 @@
     box-sizing: border-box;
 }
 
-html, body {
-    min-height: 100vh;
+html {
+    min-height: 100%;
     width: 100%;
-    overflow-x: hidden;
 }
 
 body {
     font-family: var(--font-primary);
     color: var(--color-white);
-    background: linear-gradient(-45deg, var(--color-dark), var(--color-primary-light), var(--color-primary), var(--color-dark));
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000) !important;
+    background-attachment: fixed !important;
+    background-size: 400% 400% !important;
     position: relative;
+    min-height: 100vh !important;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Debug element styles */
+.debug-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000);
+    z-index: -2;
+}
+
+/* Gradient Overlay */
+.gradient-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000);
+    background-size: 400% 400%;
+    z-index: -1;
+    opacity: 0.5;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 /* Animations */
 @keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Navigation */
@@ -183,6 +216,11 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-outline-light {
+    border-radius: 0%;
+    border: 2px solid var(--color-white);
+}
+
 .btn-outline-light:hover {
     background-color: var(--color-white);
     color: var(--color-primary);
@@ -240,8 +278,8 @@ body {
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background-image: url('../images/background.png');
-    background-size: cover;
+    background-image: url('./images/background.png');
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
@@ -250,8 +288,18 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        background: linear-gradient(-45deg, #000000, #8000b2, #520073, #000000);
+        background-attachment: fixed;
+        background-size: 400% 400%;
+        background-position: center;
+    }
+    
     #fixed {
-        background-image: url('../images/phone-bg.png');
+        background-image: url('./images/phone-bg.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
 
@@ -411,48 +459,36 @@ body {
     position: relative;
     z-index: 1;
     padding: 100px 0;
+    background: transparent;
+    min-height: 100vh;
 }
 
 .quote-form {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 100px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
-.form-control {
-    color: white;
-}
-
-.form-control-color {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-}
 .quote-form h1 {
     color: var(--color-white);
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-}
-
-.quote-form button {
-    border-radius: 0%; 
+    font-size: 2rem;
 }
 
 .quote-form .form-label {
     font-weight: 600;
     color: var(--color-white);
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.btn-outline-light {
-    border-radius: 0%;
-    border: 2px solid white;
+    font-size: 1rem;
 }
 
 .quote-form .form-control,
@@ -462,17 +498,20 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    padding: 0.75rem;
 }
 
 .quote-form .form-control:focus,
 .quote-form .form-select:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.9);
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
 }
 
 .quote-form .form-control::placeholder {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .quote-form textarea.form-control {
@@ -480,18 +519,6 @@ body {
     resize: vertical;
 }
 
-.quote-form .btn-primary {
-    padding: 1rem 2.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    background: var(--color-primary);
-    border: none;
-    box-shadow: 0 4px 15px rgba(82, 0, 115, 0.2);
-}
 
 .quote-form .btn-primary:hover {
     transform: translateY(-2px);
@@ -500,20 +527,20 @@ body {
 }
 
 .quote-form .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .quote-form .form-select {
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: var(--color-white);
     padding: 0.75rem;
-    border-radius: 5px;
+    border-radius: 0%;
     transition: var(--transition-base);
 }
 
 .quote-form .form-select:focus {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: var(--color-primary);
     box-shadow: 0 0 0 0.25rem rgba(82, 0, 115, 0.25);
     color: var(--color-white);
@@ -531,15 +558,32 @@ body {
 
 @media (max-width: 768px) {
     .quote-form {
-        padding: 2rem;
+        padding: 1.5rem;
+        margin-top: 80px;
     }
     
     .quote-form h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .quote-form .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .quote-form .form-control,
+    .quote-form .form-select {
+        padding: 0.6rem;
+        font-size: 0.95rem;
     }
     
     .quote-form .btn-primary {
-        width: 100%;
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .quote-form .form-label {
+        font-size: 0.95rem;
     }
 }
 
