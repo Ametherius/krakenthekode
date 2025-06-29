@@ -113,9 +113,10 @@ body {
 .nav-link {
     color: var(--color-white) !important;
     font-weight: 500;
-    padding: var(--spacing-sm) var(--spacing-md) !important;
     transition: var(--transition-base);
     position: relative;
+    padding: var(--spacing-md);
+    margin-left: 10px;
 }
 
 .nav-link::after {
@@ -132,6 +133,21 @@ body {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+.offcanvas {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    height: 100vh;
+}
+
+.btn-close {
+    border: 2px solid var(--color-white) !important;
+    padding: 0.5rem !important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
 }
 
 /* Hero Section */
@@ -352,6 +368,7 @@ body {
     z-index: 1;
     min-height: 100vh;
     padding-top: 100px;
+    margin-top: 150px;
 }
 
 .portfolio-card {
@@ -551,39 +568,58 @@ body {
     color: var(--color-white);
 }
 
-.quote-form .form-select::placeholder {
-    color: var(--color-white);
-    opacity: 0.7;
+/* Quote Form Iframe Styling */
+.quote-form-iframe {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-lg);
+    margin: 120px auto 40px auto;
+    max-width: 100%;
+    overflow: hidden;
+    transition: var(--transition-base);
+    border: none;
+    width: 100%;
+    height: calc(100vh - 160px);
 }
 
+.quote-form-iframe:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove scrollbars from iframe */
+.quote-form-iframe::-webkit-scrollbar {
+    display: none;
+}
+
+.quote-form-iframe {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Responsive iframe sizing */
 @media (max-width: 768px) {
-    .quote-form {
-        padding: 1.5rem;
-        margin-top: 80px;
+    .quote-form-iframe {
+        width: 100% !important;
+        height: calc(100vh - 120px) !important;
+        margin: 100px auto 20px auto;
     }
-    
-    .quote-form h1 {
-        font-size: 1.75rem;
-        margin-bottom: 1.25rem;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .quote-form-iframe {
+        width: 100% !important;
+        height: calc(100vh - 140px) !important;
     }
-    
-    .quote-form .form-group {
-        margin-bottom: 1rem;
-    }
-    
-    .quote-form .form-control,
-    .quote-form .form-select {
-        padding: 0.6rem;
-        font-size: 0.95rem;
-    }
-    
-    .quote-form .btn-primary {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.95rem;
-    }
-    
-    .quote-form .form-label {
-        font-size: 0.95rem;
+}
+
+@media (min-width: 1025px) {
+    .quote-form-iframe {
+        width: 100% !important;
+        max-width: 800px !important;
+        height: calc(100vh - 160px) !important;
     }
 }
 
