@@ -92,82 +92,141 @@
         </div>
     </div>
 
-    <!-- <div class="quote-request">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <form action="https://formsubmit.co/c0d71079728083e1263d68ce68d72ae6" method="POST" class="quote-form" enctype="multipart/form-data">
-                        <input type="hidden" name="_next" value="https://krakenthekode.com/thank-you">
-                        <input type="hidden" name="_subject" value="New Quote Request">
-                        <input type="hidden" name="_captcha" value="true">
-                        <input type="hidden" name="_template" value="box">
-                        <input type="hidden" name="_autoresponse" value="Thank you for your request! We will get back to you as soon as possible.">
-                        <input type="hidden" name="_honeypot" value="honeypot">
-                        
-                        <h1>Request a Quote</h1>
-                        <div class="form-group ">
-                            <label for="name">Name*</label>
-                            <input type="text" class="form-control" id="name" name="name" required minlength="3" pattern="[A-Za-z\s]+" title="Please enter a valid name (letters and spaces only)">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email*</label>
-                            <input type="email" class="form-control" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
-                        </div>
-                        <div class="form-group">
-                            <label for="title">Business Name*</label>
-                            <input type="text" class="form-control" id="title" name="title" required minlength="2" pattern="[A-Za-z0-9\s\-&]+" title="Please enter a valid business name">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Project Type*</label>
-                            <select class="form-control" id="project-type" name="project-type" required>
-                                <option value="website">Portfolio Website</option>
-                                <option value="app">Business Website</option>
-                                <option value="other">Landing Page</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="pages">Number of Pages</label>
-                            <input type="number" class="form-control" id="pages" name="pages" required min="1" max="5">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Additional Information*</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required minlength="30" title="Please provide at least 30 characters of information about your project"></textarea>
-                        </div>
-                        <div class="form-group col-md-12 d-flex justify-content-center">
-                            <label for="files" class="btn btn-outline-light">Upload Your Logo/Branding (Optional)</label>
-                            <input type="file" name="files" id="files" class="form-control" style="display: none;"  multiple>
-                        </div>
-                        <div class="form-group d-flex">
-                            <div class="me-2">
-                                <label for="color1">Color 1</label>
-                                <input type="color" class="form-control form-control-color" id="color1" name="color1" value="#000000" required>
-                            </div>
-                            <div class="ms-2">
-                                <label for="color2">Color 2</label>
-                                <input type="color" class="form-control form-control-color" value="#000000" id="color2" name="color2" required>
-                            </div>
-                        </div>
-                        <div class="form-group d-flex justify-content-center">
-                            <button type="submit" class="btn btn-outline-light">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
+   
 
-    <section class="py-5" style="margin-top: 100px;">
+    <section class="py-5 mb-0" style="margin-top: 80px;">
         <div class="container text-center">
             <h1 class="mb-3">Request a Quote</h1>
-            <p class="lead">Share your goals, scope, and timeline—Kraken The Kode will craft a proposal tailored to your business.</p>
+            <p class="lead mb-0">Share your goals, scope, and timeline. I will craft a proposal tailored to your business.</p>
         </div>
     </section>
 
     <div class="container d-flex justify-content-center">
-        <iframe class="justify-content-center quote-form quote-form-iframe w-100" src="https://docs.google.com/forms/d/e/1FAIpQLSd1jaWrSyXNG47QnHjqpVd-VjoLN9UMx6S2Dv9Z9P5MDhEtfg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <div class="quote-form">
+            <form action="https://formsubmit.co/info.krakenthekode@gmail.com" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_next" value="https://krakenthekode.com/thank-you">
+                <input type="hidden" name="_subject" value="New Quote Request">
+                <input type="hidden" name="_honey" style="display: none;">
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label" for="First&nbsp;Name">First Name</label>
+                        <input type="text" name="First&nbsp;Name" class="form-control p-2" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label" for="Last&nbsp;Name">Last Name</label>
+                        <input type="text" name="Last&nbsp;Name" class="form-control p-2" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" name="email" class="form-control p-2" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label" for="business">Business Name</label>
+                        <input type="text" name="business" class="form-control p-2" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="Project&nbsp;Type" class="form-label">Project Type</label>
+                        <select name="Project&nbsp;Type" class="form-select p-2" required>
+                            <option value="">Select Project Type</option>
+                            <option value="Business Website">Business Website</option>
+                            <option value="Personal Website">Personal Website</option>
+                            <option value="Portfolio Website">Portfolio Website</option>
+                            <option value="Landing Page">Landing Page</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="Domain" class="form-label">Do You Need a Domain?</label>
+                        <select name="Domain" class="form-select p-2" required>
+                            <option value="">Select Option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="Project&nbsp;Description" class="form-label">Project Description</label>
+                        <textarea name="Project&nbsp;Description" class="form-control p-2" required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="PrimaryColor" class="form-label">Primary Color</label>
+                        <input type="color" name="Primary&nbsp;Color" class="form-control form-control-color p-2" value="#000000" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="SecondaryColor" class="form-label">Secondary Color</label>
+                        <input type="color" name="Secondary&nbsp;Color" class="form-control form-control-color p-2" value="#000000" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-center mb-3">
+                        <label for="LogoUpload" class="btn btn-primary btn-lg" id="logoUploadLabel">
+                            <i class="fas fa-upload me-2"></i>Choose Logo File
+                        </label>
+                        <input type="file" name="LogoUpload" id="LogoUpload" class="form-control d-none p-2" accept="image/*" required>
+                        <div id="selectedFileName" class="mt-2 text-white"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Quote Request</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <!-- <div class="container d-flex justify-content-center">
+        <iframe class="justify-content-center quote-form quote-form-iframe w-100" src="https://docs.google.com/forms/d/e/1FAIpQLSd1jaWrSyXNG47QnHjqpVd-VjoLN9UMx6S2Dv9Z9P5MDhEtfg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div> -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Logo upload functionality
+        document.getElementById('LogoUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const label = document.getElementById('logoUploadLabel');
+            const fileNameDiv = document.getElementById('selectedFileName');
+            
+            if (file) {
+                // Update the label text to show selected file
+                label.innerHTML = '<i class="fas fa-check me-2"></i>File Selected';
+                label.classList.remove('btn-primary');
+                label.classList.add('btn-success');
+                
+                // Show the selected filename
+                fileNameDiv.innerHTML = `<small>Selected: ${file.name}</small>`;
+                fileNameDiv.style.color = '#28a745';
+            } else {
+                // Reset if no file selected
+                label.innerHTML = '<i class="fas fa-upload me-2"></i>Choose Logo File';
+                label.classList.remove('btn-success');
+                label.classList.add('btn-primary');
+                fileNameDiv.innerHTML = '';
+            }
+        });
+        
+        // Optional: Add click handler to the label for better UX
+        document.getElementById('logoUploadLabel').addEventListener('click', function(e) {
+            // The label will automatically trigger the file input due to the 'for' attribute
+            // This is just for additional styling feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    </script>
 </body>
 </html>
