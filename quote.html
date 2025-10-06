@@ -103,37 +103,34 @@
 
     <div class="container d-flex justify-content-center">
         <div class="quote-form">
-            <form action="https://formsubmit.co/info.krakenthekode@gmail.com" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="_next" value="https://krakenthekode.com/thank-you">
-                <input type="hidden" name="_subject" value="New Quote Request">
-                <input type="hidden" name="_honey" style="display: none;">
+            <form action="/api/submitForm" id="quoteForm" method="POST" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="First&nbsp;Name">First Name</label>
-                        <input type="text" name="First&nbsp;Name" class="form-control p-2" required>
+                        <input type="text" name="firstName" id="firstName" class="form-control p-2" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label" for="Last&nbsp;Name">Last Name</label>
-                        <input type="text" name="Last&nbsp;Name" class="form-control p-2" required>
+                        <input type="text" name="lastName" id="lastName" class="form-control p-2" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label class="form-label" for="email">Email</label>
-                        <input type="email" name="email" class="form-control p-2" required>
+                        <input type="email" name="emailAddress" id="emailAddress" class="form-control p-2" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label class="form-label" for="business">Business Name</label>
-                        <input type="text" name="business" class="form-control p-2" required>
+                        <input type="text" name="businessName" id="businessName" class="form-control p-2" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label for="Project&nbsp;Type" class="form-label">Project Type</label>
-                        <select name="Project&nbsp;Type" class="form-select p-2" required>
+                        <select name="projectType" id="projectType" class="form-select p-2" required>
                             <option value="">Select Project Type</option>
                             <option value="Business Website">Business Website</option>
                             <option value="Personal Website">Personal Website</option>
@@ -145,7 +142,7 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label for="Domain" class="form-label">Do You Need a Domain?</label>
-                        <select name="Domain" class="form-select p-2" required>
+                        <select name="domain" id="domain" class="form-select p-2" required>
                             <option value="">Select Option</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
@@ -155,26 +152,26 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label for="Project&nbsp;Description" class="form-label">Project Description</label>
-                        <textarea name="Project&nbsp;Description" class="form-control p-2" required></textarea>
+                        <textarea name="projectDescription" id="projectDescription" class="form-control p-2" required></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">
                         <label for="PrimaryColor" class="form-label">Primary Color</label>
-                        <input type="color" name="Primary&nbsp;Color" class="form-control form-control-color p-2" value="#000000" required>
+                        <input type="color" name="primaryColor" id="primaryColor" class="form-control form-control-color p-2" value="#000000" required>
                     </div>
                     <div class="col-6 mb-3">
                         <label for="SecondaryColor" class="form-label">Secondary Color</label>
-                        <input type="color" name="Secondary&nbsp;Color" class="form-control form-control-color p-2" value="#000000" required>
+                        <input type="color" name="secondaryColor" id="secondaryColor" class="form-control form-control-color p-2" value="#000000" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 text-center mb-3">
-                        <label for="LogoUpload" class="btn btn-primary btn-lg" id="logoUploadLabel">
+                        <label for="logoUpload" class="btn btn-primary btn-lg" id="logoUploadLabel">
                             <i class="fas fa-upload me-2"></i>Choose Logo File
                         </label>
-                        <input type="file" name="LogoUpload" id="LogoUpload" class="form-control d-none p-2" accept="image/*" required>
+                        <input type="file" name="logoUpload" id="logoUpload" class="form-control d-none p-2" accept="image/*" required>
                         <div id="selectedFileName" class="mt-2 text-white"></div>
                     </div>
                 </div>
@@ -195,7 +192,7 @@
     
     <script>
         // Logo upload functionality
-        document.getElementById('LogoUpload').addEventListener('change', function(e) {
+        document.getElementById('logoUpload').addEventListener('change', function(e) {
             const file = e.target.files[0];
             const label = document.getElementById('logoUploadLabel');
             const fileNameDiv = document.getElementById('selectedFileName');
@@ -228,5 +225,6 @@
             }, 150);
         });
     </script>
+    <script src="/script.js"></script>
 </body>
 </html>
