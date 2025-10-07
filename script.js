@@ -1,3 +1,5 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var form = document.getElementById('quoteForm');
@@ -78,4 +80,7 @@
         });
     });
 })();
+
+// Initialize Vercel Speed Insights
+SpeedInsights();
 
