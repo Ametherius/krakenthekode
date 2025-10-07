@@ -1,7 +1,7 @@
-const nodemailer = require('nodemailer');
-const formidable = require('formidable');
+import nodemailer from 'nodemailer';
+import formidable from 'formidable';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
     if (req.method !== 'POST') {
         res.statusCode = 405;
         return res.end('Method Not Allowed');
@@ -73,6 +73,6 @@ module.exports = async (req, res) => {
             return res.status(500).json({ message: 'Error sending email' });
         }
     });
-};
+}
 
 
