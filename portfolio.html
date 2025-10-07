@@ -11,6 +11,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="/images/brandlogo.png" type="image/png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/brandlogo.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/brandlogo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/brandlogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/brandlogo.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta name="description" content="Browse the Kraken The Kode portfolio: real client websites, landing pages, and business sites we’ve designed and built.">
+    <link rel="canonical" href="https://krakenthekode.com/portfolio">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portfolio - Kraken The Kode">
+    <meta property="og:description" content="Browse the Kraken The Kode portfolio: real client websites, landing pages, and business sites we’ve designed and built.">
+    <meta property="og:url" content="https://krakenthekode.com/portfolio">
+    <meta property="og:image" content="https://krakenthekode.com/images/brandlogo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio - Kraken The Kode">
+    <meta name="twitter:description" content="Browse the Kraken The Kode portfolio: real client websites, landing pages, and business sites we’ve designed and built.">
+    <meta name="twitter:image" content="https://krakenthekode.com/images/brandlogo.png">
 </head>
 <body>
     <!-- Background Image -->
@@ -28,13 +50,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="./" class="nav-link">Home</a>
+                        <a href="./index.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./portfolio" class="nav-link">Portfolio</a>
+                        <a href="./portfolio.html" class="nav-link">Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="./quote" class="nav-link">Request a Quote</a>
+                        <a href="./quote.html" class="nav-link">Request a Quote</a>
                     </li>
                 </ul>
             </div>
@@ -60,13 +82,13 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="./" class="nav-link">Home</a>
+                    <a href="./index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="./portfolio" class="nav-link">Portfolio</a>
+                    <a href="./portfolio.html" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="./quote" class="nav-link">Request a Quote</a>
+                    <a href="./quote.html" class="nav-link">Request a Quote</a>
                 </li>
             </ul>
         </div>
@@ -75,7 +97,8 @@
     <!-- Portfolio Section -->
     <section class="portfolio py-5">
         <div class="container">
-            <h1 class="text-center mb-5">Our Work</h1>
+            <h1 class="text-center fw-bold mb-2">Our Work</h1>
+            <h4 class="text-center lead mb-5">I've worked with some great people and businesses, here are some of the projects I've worked on, and what they have to say about me.</h4>
             <div class="row g-4">
                 <!-- Portfolio Item -->
                 <div class="col-lg-4 col-md-6">
@@ -85,8 +108,8 @@
                         </div>
                         <div class="portfolio-content">
                             <h3>Salish Shipping Co</h3>
-                            <p class="testimonial"><i class="fas fa-quote-left me-2"></i>"Rylan has been managing my website for over a year and I couldn't be happier. He's super easy to work with and very responsive to requests. Highly recommended."</p>
-                            <a href="https://salishshipping.com/" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt me-2"></i>Visit Website</a>
+                            <p class="testimonial mb-5"><i class="fas fa-quote-left me-2"></i>"Rylan has been managing my website for over a year and I couldn't be happier. He's super easy to work with and very responsive to requests. Highly recommended."</p>
+                            <a href="https://salishshipping.com/" class="btn btn-primary mt-5" target="_blank"><i class="fas fa-external-link-alt me-2"></i>Visit Website</a>
                         </div>
                     </div>
                 </div>
@@ -98,12 +121,25 @@
                         </div>
                         <div class="portfolio-content">
                             <h3>Victoria Tails</h3>
-                            <p class="testimonial"><i class="fas fa-quote-left me-2"></i>"My landing website is beautiful and the communication was great and constant, very direct and clear! I would 100% recommend the services to anyone!"</p>
-                            <a href="https://victoriatails.com/" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt me-2"></i>Visit Website</a>
+                            <p class="testimonial mb-5"><i class="fas fa-quote-left me-2"></i>"My landing website is beautiful and the communication was great and constant, very direct and clear! I would 100% recommend the services to anyone!"</p>
+                            <a href="https://victoriatails.com/" class="btn btn-primary mt-5" target="_blank"><i class="fas fa-external-link-alt me-2"></i>Visit Website</a>
                         </div>
                     </div>
                 </div>
                 <!-- Add more portfolio items here -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="./images/gizmoslogo.png" alt="Salish Shipping Co" class="img-fluid">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Gizmos Steam Services</h3>
+                            <p class="testimonial"><i class="fas fa-quote-left me-2"></i>"As a new business you don’t always have an extra 3-5k for a website, going with the monthly payment option sure took some pressure off. Rylan has been nothing short of amazing to work with! He’s been fast, friendly, and with a great eye for detail! My website is everything I imagined and more."</p>
+                            <a href="https://gizmossteamservices.com/" class="btn btn-primary" target="_blank"><i class="fas fa-external-link-alt me-2"></i>Visit Website</a>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </section>
