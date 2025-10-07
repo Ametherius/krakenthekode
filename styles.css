@@ -136,7 +136,7 @@ body {
 }
 
 .offcanvas {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4) !important;
     backdrop-filter: blur(10px);
     height: 100vh;
 }
