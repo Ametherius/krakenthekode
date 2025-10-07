@@ -1,4 +1,6 @@
 {
+    "cleanUrls": true,
+    "trailingSlash": false,
     "rewrites": [
         { "source": "/portfolio", "destination": "/portfolio.html" },
         { "source": "/quote", "destination": "/quote.html" }
