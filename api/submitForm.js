@@ -27,6 +27,12 @@ module.exports = async (req, res) => {
         const logo = files.logoUpload;
 
         try {
+            // Check if environment variables are set
+            if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+                console.error('Missing email credentials');
+                return res.status(500).json({ message: 'Email service not configured' });
+            }
+
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
