@@ -9,6 +9,7 @@
     "start": "vercel dev"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "formidable": "^3.5.1",
     "nodemailer": "^6.9.14"
   }
