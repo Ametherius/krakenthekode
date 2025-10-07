@@ -46,11 +46,11 @@ export default async function handler(req, res) {
         <h1 style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 24px; text-align: center; font-weight: bold; text-decoration: underline;">New Quote Request</h1>
         <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
             <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Name:</p>
-            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${name}</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${firstName} ${lastName}</p>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
             <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Email:</p>
-            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${email}</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${emailAddress}</p>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
             <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Business Name:</p>
