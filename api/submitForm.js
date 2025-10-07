@@ -41,16 +41,42 @@ export default async function handler(req, res) {
                 }
             });
 
-            const html = `New Quote Request from
-                <br><br>
-                <strong>Name:</strong> ${firstName} ${lastName}<br>
-                <strong>Email:</strong> ${emailAddress}<br>
-                <strong>Business Name:</strong> ${businessName}<br>
-                <strong>Project Type:</strong> ${projectType}<br>
-                <strong>Domain:</strong> ${domain}<br>
-                <strong>Project Description:</strong> ${projectDescription}<br>
-                <strong>Primary Color:</strong> ${primaryColor}<br>
-                <strong>Secondary Color:</strong> ${secondaryColor}<br>`;
+            const html = 
+    `<div class="container" style="display: flex; flex-direction: column; background-color: #b4b4b4; padding: 10px; border-radius: 10px;">
+        <h1 style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 24px; text-align: center; font-weight: bold; text-decoration: underline;">New Quote Request</h1>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Name:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${name}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Email:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${email}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Business Name:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${businessName}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Project Type:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${projectType}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Domain:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${domain}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Project Description:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${projectDescription}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Primary Color:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${primaryColor}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: start; align-items: start; margin-bottom: 15px; border-bottom: 3px solid #34004e; padding-bottom: 10px;">
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase; margin: 0; margin-bottom: 5px;">Secondary Color:</p>
+            <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${secondaryColor}</p>
+        </div>
+    </div>`;
 
             const mailOptions = {
                 from: `Kraken The Kode <${process.env.EMAIL_USER}>`,
