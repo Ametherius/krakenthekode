@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 import formidable from 'formidable';
 
 export default async function handler(req, res) {
+    // Quote form submission handler - v2
     if (req.method !== 'POST') {
         res.statusCode = 405;
         return res.end('Method Not Allowed');
