@@ -66,7 +66,7 @@ export default async function handler(req, res) {
                                  <tr>
                                     <td style="padding: 20px; border-bottom: 2px solid #34004e;">
                                         <h3 style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; text-transform: uppercase;">EMAIL:</h3>
-                                        <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${email}</p>
+                                        <p style="font-family: 'Arial', sans-serif; color: #34004e; font-size: 16px; font-weight: bold; margin: 0;">${emailAddress}</p>
                                     </td>
                                  </tr>
                                  <tr>
