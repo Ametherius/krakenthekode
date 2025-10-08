@@ -38,6 +38,16 @@
     <div class="debug-background"></div>
     <div class="gradient-overlay"></div>
     <div class="container-fluid" id="fixed"></div>
+
+    <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Kraken The Kode</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p id="toastMessage"></p>
+        </div>
+    </div>
     
     <nav class="navbar navbar-expand-lg fixed-top d-none d-lg-block">
         <div class="container">
@@ -187,6 +197,18 @@
     <!-- <div class="container d-flex justify-content-center">
         <iframe class="justify-content-center quote-form quote-form-iframe w-100" src="https://docs.google.com/forms/d/e/1FAIpQLSd1jaWrSyXNG47QnHjqpVd-VjoLN9UMx6S2Dv9Z9P5MDhEtfg/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div> -->
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="quoteToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                    <!-- Toast message will be inserted here -->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     

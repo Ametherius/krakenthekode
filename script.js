@@ -16,15 +16,34 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
         }
 
         function showMessage(message, isSuccess) {
-            var existing = document.getElementById('formStatusMessage');
-            if (!existing) {
-                existing = document.createElement('div');
-                existing.id = 'formStatusMessage';
-                existing.className = 'mt-3';
-                form.appendChild(existing);
+            var toastElement = document.getElementById('quoteToast');
+            var toastBody = document.getElementById('toastMessage');
+            
+            if (!toastElement || !toastBody) {
+                // Fallback to alert if toast not available
+                alert(message);
+                return;
             }
-            existing.className = 'mt-3 alert ' + (isSuccess ? 'alert-success' : 'alert-danger');
-            existing.textContent = message;
+            
+            // Set toast message and styling
+            toastBody.textContent = message;
+            
+            // Remove existing background classes
+            toastElement.classList.remove('text-bg-success', 'text-bg-danger');
+            
+            // Add appropriate background color
+            if (isSuccess) {
+                toastElement.classList.add('text-bg-success');
+            } else {
+                toastElement.classList.add('text-bg-danger');
+            }
+            
+            // Show the toast
+            var toast = new bootstrap.Toast(toastElement, {
+                autohide: true,
+                delay: 5000
+            });
+            toast.show();
         }
 
         if (logoInput && fileNameDiv) {
@@ -62,13 +81,15 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
                 })
                 .then(function (result) {
                     if (result.ok) {
-                        showMessage('Thanks! Your request has been sent.', true);
+                        showMessage('✅ Success! Your quote request has been sent. We\'ll get back to you soon!', true);
+                        // Reset the form after successful submission
                         setTimeout(function () {
-                            window.location.href = '/thank-you.html';
-                        }, 800);
+                            form.reset();
+                            if (fileNameDiv) fileNameDiv.innerHTML = '';
+                        }, 500);
                     } else {
                         var msg = (result.data && (result.data.message || result.data.error)) || 'There was a problem submitting your request.';
-                        showMessage(msg, false);
+                        showMessage('❌ ' + msg, false);
                     }
                 })
                 .catch(function () {
