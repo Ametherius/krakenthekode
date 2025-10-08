@@ -26,8 +26,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
                 return;
             }
             
-            // Set toast message
-            toastBody.textContent = message;
+            // Set toast message (convert \n to <br> for proper line breaks)
+            toastBody.innerHTML = message.replace(/\n/g, '<br>');
             
             // Remove existing background classes from body
             toastBody.classList.remove('bg-success', 'bg-danger', 'text-white');
@@ -47,10 +47,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
                 }
             }
             
-            // Show the toast
+            // Show the toast (longer delay for error messages)
             var toast = new bootstrap.Toast(toastElement, {
                 autohide: true,
-                delay: 5000
+                delay: isSuccess ? 5000 : 8000  // 8 seconds for errors, 5 for success
             });
             toast.show();
         }
@@ -97,12 +97,39 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
                             if (fileNameDiv) fileNameDiv.innerHTML = '';
                         }, 500);
                     } else {
-                        var msg = (result.data && (result.data.message || result.data.error)) || 'There was a problem submitting your request.';
-                        showMessage('❌ ' + msg, false);
+                        var errorMsg = 'There was a problem submitting your request.';
+                        var errorDetails = '';
+                        
+                        if (result.data) {
+                            errorMsg = result.data.message || result.data.error || errorMsg;
+                            
+                            // Add error code if available
+                            if (result.status) {
+                                errorDetails += '\nError Code: ' + result.status;
+                            }
+                            
+                            // Add additional details if available
+                            if (result.data.details) {
+                                errorDetails += '\nDetails: ' + result.data.details;
+                            }
+                            
+                            // Add helpful hints based on error type
+                            if (result.status === 500) {
+                                errorDetails += '\n\nPlease check that all required fields are filled out correctly and try again.';
+                            } else if (result.status === 400) {
+                                errorDetails += '\n\nPlease verify your form data is valid.';
+                            }
+                        }
+                        
+                        showMessage('❌ ' + errorMsg + errorDetails, false);
                     }
                 })
-                .catch(function () {
-                    showMessage('Network error. Please try again.', false);
+                .catch(function (err) {
+                    var errorMsg = '❌ Network error. Please check your connection and try again.';
+                    if (err && err.message) {
+                        errorMsg += '\n\nTechnical Details: ' + err.message;
+                    }
+                    showMessage(errorMsg, false);
                 })
                 .finally(function () {
                     setSubmitting(false);
