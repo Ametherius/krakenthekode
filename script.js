@@ -18,6 +18,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
         function showMessage(message, isSuccess) {
             var toastElement = document.getElementById('quoteToast');
             var toastBody = document.getElementById('toastMessage');
+            var toastHeader = toastElement ? toastElement.querySelector('.toast-header') : null;
             
             if (!toastElement || !toastBody) {
                 // Fallback to alert if toast not available
@@ -25,17 +26,25 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
                 return;
             }
             
-            // Set toast message and styling
+            // Set toast message
             toastBody.textContent = message;
             
-            // Remove existing background classes
-            toastElement.classList.remove('text-bg-success', 'text-bg-danger');
+            // Remove existing background classes from body
+            toastBody.classList.remove('bg-success', 'bg-danger', 'text-white');
             
-            // Add appropriate background color
+            // Add appropriate background color to toast body
             if (isSuccess) {
-                toastElement.classList.add('text-bg-success');
+                toastBody.classList.add('bg-success', 'text-white');
+                if (toastHeader) {
+                    toastHeader.classList.remove('bg-danger', 'text-white');
+                    toastHeader.classList.add('bg-success', 'text-white');
+                }
             } else {
-                toastElement.classList.add('text-bg-danger');
+                toastBody.classList.add('bg-danger', 'text-white');
+                if (toastHeader) {
+                    toastHeader.classList.remove('bg-success');
+                    toastHeader.classList.add('bg-danger', 'text-white');
+                }
             }
             
             // Show the toast
