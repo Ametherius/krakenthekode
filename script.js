@@ -56,14 +56,41 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
         }
 
         if (logoInput && fileNameDiv) {
+            var logoLabel = document.getElementById('logoUploadLabel');
+            
             logoInput.addEventListener('change', function (e) {
                 var file = e.target.files && e.target.files[0];
                 if (file) {
                     fileNameDiv.innerHTML = '<small>Selected: ' + file.name + '</small>';
+                    fileNameDiv.style.color = '#28a745';
+                    
+                    // Update the label styling
+                    if (logoLabel) {
+                        logoLabel.innerHTML = '<i class="fas fa-check me-2"></i>File Selected';
+                        logoLabel.classList.remove('btn-primary');
+                        logoLabel.classList.add('btn-success');
+                    }
                 } else {
                     fileNameDiv.innerHTML = '';
+                    
+                    // Reset the label styling
+                    if (logoLabel) {
+                        logoLabel.innerHTML = '<i class="fas fa-upload me-2"></i>Choose Logo File';
+                        logoLabel.classList.remove('btn-success');
+                        logoLabel.classList.add('btn-primary');
+                    }
                 }
             });
+            
+            // Optional: Add click handler to the label for better UX
+            if (logoLabel) {
+                logoLabel.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(function() {
+                        logoLabel.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            }
         }
 
         form.addEventListener('submit', function (e) {
@@ -95,6 +122,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
                         setTimeout(function () {
                             form.reset();
                             if (fileNameDiv) fileNameDiv.innerHTML = '';
+                            
+                            // Reset logo upload button styling
+                            var logoLabel = document.getElementById('logoUploadLabel');
+                            if (logoLabel) {
+                                logoLabel.innerHTML = '<i class="fas fa-upload me-2"></i>Choose Logo File';
+                                logoLabel.classList.remove('btn-success');
+                                logoLabel.classList.add('btn-primary');
+                            }
                         }, 500);
                     } else {
                         var errorMsg = 'There was a problem submitting your request.';

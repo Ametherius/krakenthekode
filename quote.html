@@ -103,7 +103,7 @@
 
     <div class="container d-flex justify-content-center">
         <div class="quote-form">
-            <form action="/api/submitForm" id="quoteForm" method="POST" enctype="multipart/form-data">
+            <form id="quoteForm" method="POST" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -202,42 +202,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Logo upload functionality
-        document.getElementById('logoUpload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const label = document.getElementById('logoUploadLabel');
-            const fileNameDiv = document.getElementById('selectedFileName');
-            
-            if (file) {
-                // Update the label text to show selected file
-                label.innerHTML = '<i class="fas fa-check me-2"></i>File Selected';
-                label.classList.remove('btn-primary');
-                label.classList.add('btn-success');
-                
-                // Show the selected filename
-                fileNameDiv.innerHTML = `<small>Selected: ${file.name}</small>`;
-                fileNameDiv.style.color = '#28a745';
-            } else {
-                // Reset if no file selected
-                label.innerHTML = '<i class="fas fa-upload me-2"></i>Choose Logo File';
-                label.classList.remove('btn-success');
-                label.classList.add('btn-primary');
-                fileNameDiv.innerHTML = '';
-            }
-        });
-        
-        // Optional: Add click handler to the label for better UX
-        document.getElementById('logoUploadLabel').addEventListener('click', function(e) {
-            // The label will automatically trigger the file input due to the 'for' attribute
-            // This is just for additional styling feedback
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
-        });
-    </script>
     <script type="module" src="/script.js"></script>
 </body>
 </html>
