@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kraken The Kode - Frequently Asked Questions</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="/images/brandlogo.png" type="image/png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/brandlogo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/images/brandlogo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/brandlogo.png"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/brandlogo.png" />
+  </head>
+  <body>
+    <div class="debug-background"></div>
+    <div class="gradient-overlay"></div>
+    <div class="container-fluid" id="fixed"></div>
+
+    <!-- Desktop Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top d-none d-lg-block">
+      <div class="container">
+        <a href="" class="navbar-brand">
+          <img src="/images/brandlogo.png" alt="Kraken The Kode" width="50" />
+        </a>
+
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="./" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="./portfolio" class="nav-link">Portfolio</a>
+            </li>
+            <li class="nav-item"><a href="./faq" class="nav-link">FAQ's</a></li>
+            <li class="nav-item">
+              <a href="./quote" class="nav-link">Request a Quote</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Toggler -->
+    <div class="d-lg-none bg-black p-2 d-flex fixed-top" style="z-index: 1030">
+      <button
+        class="navbar-toggler m-3 border-white border-3"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+      >
+        <i class="fa-solid fa-bars text-white border-white border-3 fs-2"></i>
+      </button>
+      <div class="container d-flex py-auto my-auto">
+        <img
+          src="/images/brandlogo.png"
+          alt="Kraken The Kode"
+          width="40"
+          class="m-3"
+        />
+        <h2 class="text-white my-auto">Kraken The Kode</h2>
+      </div>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-start d-lg-none"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
+          Kraken The Kode
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="./" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./portfolio" class="nav-link">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a href="./faq" class="nav-link">FAQ's</a>
+          </li>
+          <li class="nav-item">
+            <a href="./quote" class="nav-link">Request a Quote</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container mb-5">
+      <div class="container faq-container">
+        <h2 class="text-white text-center mb-5 mt-4">
+          Frequently Asked Questions
+        </h2>
+        <div class="accordion faq-accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+              >
+                FAQ Number 1
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <strong
+                  >Website costs with us vary depending on the scope of the
+                  project. We want to provide affordable options no matter the
+                  size of your company, or the size of the project</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-6 text-center text-md-start">
+            <p class="mb-0">
+              © <span id="year"></span> Kraken The Kode. All rights reserved.
+            </p>
+          </div>
+          <div class="col-6 text-end d-flex justify-content-end">
+            <a href="https://github.com/Ametherius" class="fs-2 text-end"
+              ><i class="fa-brands fa-github me-2"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/p/Kraken-The-Kode-61573976872175/"
+              class="fs-2"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
