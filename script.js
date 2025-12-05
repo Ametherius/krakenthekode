@@ -189,9 +189,13 @@ import { faq } from "./faq.js";
 
 // Display FAQ Accordion
 document.addEventListener("DOMContentLoaded", function () {
-  const faqAccordion = document.querySelector(".faq-accordion");
+  const faqAccordion = document.getElementById("faqAccordion");
   console.log(faqAccordion);
 
+  if (!faqAccordion) {
+    console.error("FAQ element not found");
+    return;
+  }
   const displayFAQ = function (faq) {
     faqAccordion.textContent = "";
     faq.forEach(function (faqs, i) {
@@ -220,3 +224,26 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   displayFAQ(faq);
 });
+
+const timeLabel = document.querySelector(".time");
+const locale = navigator.language;
+const currentTime = setInterval(() => {
+  const time = new Date();
+  timeLabel.textContent = new Intl.DateTimeFormat(
+    locale,
+    {
+      hour: "numeric",
+      minute: "numeric",
+    },
+    1000
+  ).format(time);
+});
+
+const dateLabel = document.querySelector(".date");
+const date = new Date();
+dateLabel.textContent = new Intl.DateTimeFormat(locale, {
+  day: "2-digit",
+  month: "short",
+  weekday: "long",
+  year: "numeric",
+}).format(date);

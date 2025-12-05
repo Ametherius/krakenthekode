@@ -63,6 +63,17 @@ body {
   overflow-x: hidden;
 }
 
+.time {
+  font-size: 60px;
+  opacity: 50%;
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+
+.date {
+  opacity: 50%;
+  margin-top: 5px;
+}
 /* Debug element styles */
 .debug-background {
   position: fixed;
@@ -159,7 +170,6 @@ body {
 /* Hero Section */
 .hero {
   padding-top: 80px;
-  position: relative;
   overflow: hidden;
 }
 
