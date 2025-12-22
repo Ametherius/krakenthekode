@@ -178,6 +178,10 @@ body {
   margin-bottom: var(--spacing-lg);
 }
 
+.about {
+  padding: var(--spacing-lg);
+}
+
 /* Services Section */
 .service-card {
   background: rgba(255, 255, 255, 0.1);

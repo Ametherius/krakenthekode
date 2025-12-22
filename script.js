@@ -247,3 +247,39 @@ dateLabel.textContent = new Intl.DateTimeFormat(locale, {
   weekday: "long",
   year: "numeric",
 }).format(date);
+
+const navLinks = [
+  {
+    text: "Home",
+    link: "./",
+  },
+  {
+    text: "Portfolio",
+    link: "./portfolio",
+  },
+  {
+    text: "FAQ",
+    link: "./faq",
+  },
+  {
+    text: "Request A Quote",
+    link: "./quote",
+  },
+];
+
+const desktopNav = document.querySelector(".desktop-nav");
+const mobileNav = document.querySelector(".mobile-nav");
+
+const displayNav = function (container, array) {
+  container.textContent = "";
+  array.forEach((arr) => {
+    const html = `
+          <li class="nav-item">
+            <a href="${arr.link}" class="nav-link">${arr.text}</a>
+          </li>
+    `;
+    container.insertAdjacentHTML("beforeend", html);
+  });
+};
+displayNav(mobileNav, navLinks);
+displayNav(desktopNav, navLinks);

@@ -2,16 +2,16 @@ export const faq = [
   {
     question: "How much does a website cost with Kraken The Kode?",
     answer:
-      "Website costs with Kraken The Kode vary depending on the scope of the project. We want to provide affordable options no matter the size of your company, or the size of the project. ",
+      "Website costs with Kraken The Kode vary depending on the scope of the project. We want to provide affordable options no matter the size of your company, or the size of the project.",
   },
   {
     question: "How long does it take to build my website?",
     answer:
-      "All websites build by Kraken The Kode are custom coded websites, we do not use Wix or WordPress. A website can be built in as little as a couple of days, up to a couple of weeks.",
+      "All websites build by Kraken The Kode are custom coded websites, we do not use Wix or WordPress. A website can be built in as little as a couple of days, up to a couple of weeks. We want to provide a final product that you will be happy with.",
   },
   {
     question: "What is the process of starting a project with Kraken The Kode?",
-    answer: `To begin start a project with Kraken The Kode, please fill out the form on our <a href="./quote" class="text-white">Quote Page</a> and we can provide you with an accurate quote and timeline for the project.`,
+    answer: `To begin start a project with Kraken The Kode, please fill out the form on our <a href="./quote" class="text-white">Quote Page</a> and we can provide you with an accurate quote and timeline for the project. We will try our best to get back to you within 1 business day.`,
   },
   {
     question:
