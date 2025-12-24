@@ -171,6 +171,16 @@ body {
 .hero {
   padding-top: 80px;
   overflow: hidden;
+  position: relative;
+  padding: var(--spacing-lg);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 50px;
 }
 
 .hero h1 {
@@ -178,6 +188,14 @@ body {
   margin-bottom: var(--spacing-lg);
 }
 
+.location-marker {
+  background: transparent;
+  border: 1px solid #ffffff;
+  width: fit-content;
+  border-radius: 30px;
+  display: flex;
+  padding: 5px 10px;
+}
 .about {
   padding: var(--spacing-lg);
 }
@@ -255,6 +273,16 @@ body {
 .btn-outline-light {
   border-radius: 0%;
   border: 2px solid var(--color-white);
+}
+
+.hero-content .btn-primary {
+  background-color: #ffffff;
+  color: var(--color-primary);
+}
+
+.hero-content .btn-primary:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
 }
 
 .btn-outline-light:hover {

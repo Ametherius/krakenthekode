@@ -225,29 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
   displayFAQ(faq);
 });
 
-const timeLabel = document.querySelector(".time");
-const locale = navigator.language;
-const currentTime = setInterval(() => {
-  const time = new Date();
-  timeLabel.textContent = new Intl.DateTimeFormat(
-    locale,
-    {
-      hour: "numeric",
-      minute: "numeric",
-    },
-    1000
-  ).format(time);
-});
-
-const dateLabel = document.querySelector(".date");
-const date = new Date();
-dateLabel.textContent = new Intl.DateTimeFormat(locale, {
-  day: "2-digit",
-  month: "short",
-  weekday: "long",
-  year: "numeric",
-}).format(date);
-
 const navLinks = [
   {
     text: "Home",
@@ -267,19 +244,23 @@ const navLinks = [
   },
 ];
 
-const desktopNav = document.querySelector(".desktop-nav");
-const mobileNav = document.querySelector(".mobile-nav");
+document.addEventListener("DOMContentLoaded", function () {
+  const desktopNav = document.querySelector(".desktop-nav");
+  const mobileNav = document.querySelector(".mobile-nav");
 
-const displayNav = function (container, array) {
-  container.textContent = "";
-  array.forEach((arr) => {
-    const html = `
-          <li class="nav-item">
-            <a href="${arr.link}" class="nav-link">${arr.text}</a>
-          </li>
-    `;
-    container.insertAdjacentHTML("beforeend", html);
-  });
-};
-displayNav(mobileNav, navLinks);
-displayNav(desktopNav, navLinks);
+  console.log(desktopNav, mobileNav);
+
+  const displayNav = function (container, array) {
+    container.textContent = "";
+    array.forEach((arr) => {
+      const html = `
+            <li class="nav-item">
+              <a href="${arr.link}" class="nav-link">${arr.text}</a>
+            </li>
+      `;
+      container.insertAdjacentHTML("beforeend", html);
+    });
+  };
+  displayNav(mobileNav, navLinks);
+  displayNav(desktopNav, navLinks);
+});
