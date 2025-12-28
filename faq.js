@@ -1,5 +1,10 @@
 export const faq = [
   {
+    question: "Why choose Kraken The Kode?",
+    answer:
+      "Why choose Kraken The Kode? Well at Kraken The Kode we don't use Wix or WordPress for our websites, all of our websites are custom coded and tailored to your vision. With this, there are more options for customization. We provide updates, and a preview link for you to review changes you've requested, and to make sure your website looks exactly how you like it. We will never launch a website that you're not absolutely in love with!",
+  },
+  {
     question: "How much does a website cost with Kraken The Kode?",
     answer:
       "Website costs with Kraken The Kode vary depending on the scope of the project. We want to provide affordable options no matter the size of your company, or the size of the project.",
@@ -7,11 +12,11 @@ export const faq = [
   {
     question: "How long does it take to build my website?",
     answer:
-      "All websites build by Kraken The Kode are custom coded websites, we do not use Wix or WordPress. A website can be built in as little as a couple of days, up to a couple of weeks. We want to provide a final product that you will be happy with.",
+      "All websites built by Kraken The Kode are custom coded websites, we do not use Wix or WordPress. A website can be built in as little as a couple of days, up to a couple of weeks. We want to provide a final product that you will be happy with.",
   },
   {
     question: "What is the process of starting a project with Kraken The Kode?",
-    answer: `To begin start a project with Kraken The Kode, please fill out the form on our <a href="./quote" class="text-white">Quote Page</a> and we can provide you with an accurate quote and timeline for the project. We will try our best to get back to you within 1 business day.`,
+    answer: `To begin a project with Kraken The Kode, please fill out the form on our <a href="./quote" class="text-white">Quote Page</a> and we can provide you with an accurate quote and timeline for the project. We will try our best to get back to you within 1 business day.`,
   },
   {
     question:
@@ -20,7 +25,7 @@ export const faq = [
       "Content is not needed from you, we can create it. If however, you would like something specific written or would like to make edits to anything after it's been created that is perfectly fine. Images for gallery photos or anything of that nature would have to be sent in an email.",
   },
   {
-    question: "Does Kraken The Kode offer monthly maintentance and support?",
+    question: "Does Kraken The Kode offer monthly maintenance and support?",
     answer:
       "Yes! Kraken The Kode absolutely offers monthly maintenance and support. Support is also available on demand with our monthly payment plan.",
   },
