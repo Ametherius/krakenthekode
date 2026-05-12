@@ -207,6 +207,7 @@ body {
   border-radius: 10px;
   transition: var(--transition-base);
   color: var(--color-white);
+  height: 20rem;
 }
 
 .service-card:hover {
