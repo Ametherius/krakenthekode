@@ -1,7 +1,5 @@
 import { faq } from "./faq.js";
-import { inject } from "@vercel/speed-insights";
 
-inject();
 (function () {
   document.addEventListener("DOMContentLoaded", function () {
     var form = document.getElementById("quoteForm");
