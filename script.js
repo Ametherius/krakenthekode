@@ -1,5 +1,7 @@
 import { faq } from "./faq.js";
+import { inject } from "@vercel/speed-insights";
 
+inject();
 (function () {
   document.addEventListener("DOMContentLoaded", function () {
     var form = document.getElementById("quoteForm");
@@ -125,7 +127,7 @@ import { faq } from "./faq.js";
           if (result.ok) {
             showMessage(
               "✅ Success! Your quote request has been sent. We'll get back to you soon!",
-              true
+              true,
             );
             // Reset the form after successful submission
             setTimeout(function () {
