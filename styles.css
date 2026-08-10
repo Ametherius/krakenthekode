@@ -236,6 +236,8 @@ body {
   border-radius: 10px;
   transition: var(--transition-base);
   color: var(--color-white);
+  display: flex;
+  flex-direction: column;
 }
 
 .tech-card:hover {
